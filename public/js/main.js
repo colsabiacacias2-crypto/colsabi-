@@ -95,3 +95,158 @@ document.querySelectorAll('.mini-carousel').forEach(carousel => {
     update();
   });
 });
+
+// Team Carousel Logic
+const teamCarouselWrapper = document.querySelector('.team-carousel-wrapper');
+if (teamCarouselWrapper) {
+  const track = teamCarouselWrapper.querySelector('.team-carousel-track');
+  let slides = Array.from(teamCarouselWrapper.querySelectorAll('.team-slide'));
+  const prevBtn = teamCarouselWrapper.querySelector('.team-carousel-btn.prev');
+  const nextBtn = teamCarouselWrapper.querySelector('.team-carousel-btn.next');
+  
+  let currentIndex = 0;
+  let autoplayTimer = null;
+  const AUTOPLAY_INTERVAL = 3500; // 3.5 segundos por movimiento
+  let isTransitioning = false;
+  
+  // 1. Clonar elementos para el bucle infinito
+  // Clonamos los primeros 4 y los últimos 4 elementos (suficientes para llenar la vista)
+  const clonesCount = 4;
+  
+  // Clonar al final
+  for (let i = 0; i < clonesCount; i++) {
+    if (slides[i]) {
+      const clone = slides[i].cloneNode(true);
+      clone.classList.add('clone');
+      track.appendChild(clone);
+    }
+  }
+  
+  // Clonar al inicio
+  for (let i = slides.length - 1; i >= Math.max(0, slides.length - clonesCount); i--) {
+    if (slides[i]) {
+      const clone = slides[i].cloneNode(true);
+      clone.classList.add('clone');
+      track.insertBefore(clone, track.firstChild);
+    }
+  }
+  
+  // Actualizar lista de slides incluyendo clones
+  slides = Array.from(teamCarouselWrapper.querySelectorAll('.team-slide'));
+  
+  // Empezar en el primer elemento real (índice = clonesCount)
+  currentIndex = clonesCount;
+  
+  function getVisibleSlides() {
+    if (window.innerWidth <= 480) return 1;
+    if (window.innerWidth <= 768) return 2;
+    if (window.innerWidth <= 1024) return 3;
+    return 4;
+  }
+  
+  function updateCarousel(smooth = true) {
+    const visibleSlides = getVisibleSlides();
+    
+    // Si no es smooth (para el salto instantáneo), quitamos la transición
+    if (!smooth) {
+      track.style.transition = 'none';
+    } else {
+      track.style.transition = 'transform 0.8s cubic-bezier(0.25, 1, 0.5, 1)';
+    }
+    
+    // Calcular el porcentaje basado en el slide base
+    // Cada slide ocupa (100 / visibleSlides)% (aunque en css usamos calc(25% - gap))
+    // Para ser exactos con el gap de CSS, calculamos el porcentaje de traslación
+    // Un slide = 100% de su propio ancho. Como el track usa display:flex y gap, 
+    // lo más seguro es usar unidades basadas en el ancho del elemento
+    
+    // Una forma más precisa que funciona con gaps:
+    const slideWidth = 100 / visibleSlides;
+    const translatePercentage = -(currentIndex * slideWidth);
+    track.style.transform = `translateX(${translatePercentage}%)`;
+    
+    // Restaurar la transición después del salto instantáneo
+    if (!smooth) {
+      // Forzar un reflow para que el navegador aplique el 'none' antes de restaurar
+      track.offsetHeight;
+      track.style.transition = 'transform 0.8s cubic-bezier(0.25, 1, 0.5, 1)';
+    }
+  }
+  
+  // Evento para detectar el fin de la transición
+  track.addEventListener('transitionend', () => {
+    isTransitioning = false;
+    
+    const realSlidesCount = slides.length - (clonesCount * 2);
+    
+    // Si nos pasamos hacia la derecha (entramos en los clones finales)
+    if (currentIndex >= clonesCount + realSlidesCount) {
+      currentIndex = currentIndex - realSlidesCount;
+      updateCarousel(false); // Salto instantáneo
+    }
+    // Si nos pasamos hacia la izquierda (entramos en los clones iniciales)
+    else if (currentIndex < clonesCount) {
+      currentIndex = currentIndex + realSlidesCount;
+      updateCarousel(false); // Salto instantáneo
+    }
+  });
+  
+  function goNext() {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    currentIndex++;
+    updateCarousel();
+  }
+
+  function goPrev() {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    currentIndex--;
+    updateCarousel();
+  }
+
+  // Eventos de botones
+  nextBtn?.addEventListener('click', () => {
+    goNext();
+    resetAutoplay();
+  });
+  
+  prevBtn?.addEventListener('click', () => {
+    goPrev();
+    resetAutoplay();
+  });
+  
+  // Autoplay Logic
+  function startAutoplay() {
+    stopAutoplay();
+    autoplayTimer = setInterval(goNext, AUTOPLAY_INTERVAL);
+  }
+
+  function stopAutoplay() {
+    if (autoplayTimer) {
+      clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  }
+
+  function resetAutoplay() {
+    stopAutoplay();
+    startAutoplay();
+  }
+
+  // Pausar al pasar el mouse por encima
+  teamCarouselWrapper.addEventListener('mouseenter', stopAutoplay);
+  teamCarouselWrapper.addEventListener('mouseleave', startAutoplay);
+  
+  // Actualizar en resize
+  window.addEventListener('resize', () => {
+    // Para evitar glitches durante el resize
+    track.style.transition = 'none';
+    updateCarousel(false);
+    resetAutoplay();
+  });
+  
+  // Inicializar sin animación para colocar en la posición correcta
+  updateCarousel(false);
+  startAutoplay();
+}

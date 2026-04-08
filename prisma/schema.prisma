@@ -1,0 +1,173 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum Role {
+  ADMIN
+  ASOCIADO
+}
+
+enum UserStatus {
+  PENDING
+  ACTIVE
+  SUSPENDED
+}
+
+enum ApplicationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum ScenarioStatus {
+  PENDING
+  ACTIVE
+  REJECTED
+  INACTIVE
+}
+
+enum AssignmentStatus {
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+enum HourEntryStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model User {
+  id                     String                @id @default(cuid())
+  email                  String                @unique
+  fullName               String
+  passwordHash           String?
+  role                   Role
+  status                 UserStatus            @default(PENDING)
+  createdAt              DateTime              @default(now())
+  updatedAt              DateTime              @updatedAt
+  managedScenarios       PracticeScenario[]    @relation("ScenarioManager")
+  decidedApplications    ScenarioApplication[] @relation("ApplicationDecision")
+  hourReviews            SocialHourEntry[]     @relation("EntryReviewer")
+  auditLogs              AuditLog[]
+}
+
+model ScenarioApplication {
+  id                     String            @id @default(cuid())
+  organizationName       String
+  contactName            String
+  contactEmail           String
+  contactPhone           String
+  city                   String
+  address                String?
+  capacity               Int?
+  description            String
+  status                 ApplicationStatus @default(PENDING)
+  notes                  String?
+  submittedAt            DateTime          @default(now())
+  reviewedAt             DateTime?
+  approvedScenarioId     String?           @unique
+  decidedByUserId        String?
+  createdAt              DateTime          @default(now())
+  updatedAt              DateTime          @updatedAt
+  approvedScenario       PracticeScenario? @relation(fields: [approvedScenarioId], references: [id])
+  decidedBy              User?             @relation("ApplicationDecision", fields: [decidedByUserId], references: [id])
+}
+
+model PracticeScenario {
+  id                     String                     @id @default(cuid())
+  name                   String
+  slug                   String                     @unique
+  description            String
+  city                   String
+  address                String?
+  capacity               Int?
+  status                 ScenarioStatus             @default(PENDING)
+  managerUserId          String?
+  createdAt              DateTime                   @default(now())
+  updatedAt              DateTime                   @updatedAt
+  manager                User?                      @relation("ScenarioManager", fields: [managerUserId], references: [id])
+  studentAssignments     StudentScenarioAssignment[]
+  hourEntries            SocialHourEntry[]
+}
+
+model Student {
+  id                     String                     @id @default(cuid())
+  studentCode            String                     @unique
+  documentNumber         String?                    @unique
+  fullName               String
+  grade                  String
+  section                String?
+  email                  String?
+  phone                  String?
+  isActive               Boolean                    @default(true)
+  createdAt              DateTime                   @default(now())
+  updatedAt              DateTime                   @updatedAt
+  assignments            StudentScenarioAssignment[]
+  hourEntries            SocialHourEntry[]
+}
+
+model StudentScenarioAssignment {
+  id                     String           @id @default(cuid())
+  studentId              String
+  scenarioId             String
+  assignedAt             DateTime         @default(now())
+  completedAt            DateTime?
+  requiredHours          Int              @default(80)
+  approvedHours          Int              @default(0)
+  status                 AssignmentStatus @default(ACTIVE)
+  student                Student          @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  scenario               PracticeScenario @relation(fields: [scenarioId], references: [id], onDelete: Cascade)
+
+  @@unique([studentId, scenarioId])
+  @@index([scenarioId, status])
+}
+
+model SocialHourEntry {
+  id                     String           @id @default(cuid())
+  studentId              String
+  scenarioId             String
+  reviewedByUserId       String?
+  workDate               DateTime
+  hours                  Decimal          @db.Decimal(5, 2)
+  activityTitle          String
+  description            String
+  evidenceUrl            String?
+  evidenceName           String?
+  evidenceMimeType       String?
+  status                 HourEntryStatus  @default(PENDING)
+  reviewNotes            String?
+  reviewedAt             DateTime?
+  createdAt              DateTime         @default(now())
+  updatedAt              DateTime         @updatedAt
+  student                Student          @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  scenario               PracticeScenario @relation(fields: [scenarioId], references: [id], onDelete: Cascade)
+  reviewedBy             User?            @relation("EntryReviewer", fields: [reviewedByUserId], references: [id])
+
+  @@index([studentId, status])
+  @@index([scenarioId, status])
+  @@index([workDate])
+}
+
+model AuditLog {
+  id                     String   @id @default(cuid())
+  userId                 String?
+  action                 String
+  entity                 String
+  entityId               String
+  ipAddress              String?
+  userAgent              String?
+  details                Json?
+  createdAt              DateTime @default(now())
+  user                   User?    @relation(fields: [userId], references: [id])
+
+  @@index([entity, entityId])
+  @@index([createdAt])
+}

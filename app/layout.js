@@ -1,11 +1,10 @@
 import './globals.css'
-import Header from './components/Header'
-import Footer from './components/Footer'
 import Script from 'next/script'
+import AppShell from './components/AppShell'
 
 export const metadata = {
-  title: 'Página COLSABI',
-  description: 'Estructura básica Next.js'
+  title: 'COLSABI',
+  description: 'Colegio Nuestra Señora de la Sabiduría'
 }
 
 export default function RootLayout({ children }) {
@@ -20,9 +19,7 @@ export default function RootLayout({ children }) {
         <meta name="theme-color" content="#0a4ca3" />
       </head>
       <body>
-        <Header />
-        {children}
-        <Footer />
+        <AppShell>{children}</AppShell>
         <Script src="/js/main.js" strategy="afterInteractive" />
       </body>
     </html>

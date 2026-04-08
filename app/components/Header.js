@@ -14,17 +14,9 @@ export default function Header() {
             <li className="nav__item has-submenu">
               <a href="/#inicio" className="nav__link">Inicio</a>
               <ul className="submenu">
-                <li><a href="/#hijas-sabiduria" className="nav__link">Hijas de la Sabiduría</a></li>
-                <li><a href="/#identidades" className="nav__link">Nuestras Entidades</a></li>
-                <li><a href="/#nosotros" className="nav__link">Nosotros</a></li>
-              </ul>
-            </li>
-            <li className="nav__item has-submenu">
-              <a href="/simbolos" className="nav__link">Símbolos</a>
-              <ul className="submenu">
-                <li><a href="/simbolos#escudo" className="nav__link">Escudo</a></li>
-                <li><a href="/simbolos#bandera" className="nav__link">Bandera</a></li>
-                <li><a href="/simbolos#himnos" className="nav__link">Himnos</a></li>
+                <li><a href="/#mision-vision" className="nav__link">Misión y Visión</a></li>
+                <li><a href="/#instalaciones" className="nav__link">Instalaciones</a></li>
+                <li><a href="/#promociones" className="nav__link">Promociones</a></li>
               </ul>
             </li>
             <li className="nav__item has-submenu">
@@ -37,10 +29,25 @@ export default function Header() {
             <li className="nav__item has-submenu">
               <a href="/colsabi" className="nav__link">COLSABI</a>
               <ul className="submenu">
-                <li><a href="/colsabi#mision-vision" className="nav__link">Misión y Visión</a></li>
                 <li><a href="/colsabi#equipo" className="nav__link">Equipo</a></li>
                 <li><a href="/colsabi#promociones" className="nav__link">Promociones</a></li>
-                <li><a href="/colsabi#instalaciones" className="nav__link">Instalaciones</a></li>
+              </ul>
+            </li>
+            <li className="nav__item has-submenu">
+              <a href="/historia" className="nav__link">Historia</a>
+              <ul className="submenu">
+                <li><a href="/historia#historia" className="nav__link">Nuestra Historia</a></li>
+                <li><a href="/historia#fundadores" className="nav__link">Fundadores</a></li>
+                <li><a href="/historia#hijas-sabiduria" className="nav__link">Hijas de la Sabiduría</a></li>
+                <li><a href="/historia#identidades" className="nav__link">Entidades</a></li>
+              </ul>
+            </li>
+            <li className="nav__item has-submenu">
+              <a href="/simbolos" className="nav__link">Símbolos</a>
+              <ul className="submenu">
+                <li><a href="/simbolos#escudo" className="nav__link">Escudo</a></li>
+                <li><a href="/simbolos#bandera" className="nav__link">Bandera</a></li>
+                <li><a href="/simbolos#himnos" className="nav__link">Himnos</a></li>
               </ul>
             </li>
             <li className="nav__item has-submenu">
@@ -52,7 +59,7 @@ export default function Header() {
               </ul>
             </li>
             <li className="nav-item redes">
-              <a href="/#contacto" className="nav__link btn btn--sm">Contacto</a>
+              <a href="/#contacto" className="btn btn--sm">Contacto</a>
               <div className="social-icons">
                 <a href="https://www.facebook.com/colsabi.acacias.7?locale=es_LA" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f"></i></a>
                 <a href="https://www.instagram.com/colsabi_acacias/" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a>

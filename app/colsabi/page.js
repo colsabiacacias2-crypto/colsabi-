@@ -5,22 +5,11 @@ export default function Colsabi() {
         <div className="hero__bg"></div>
         <div className="container hero__content">
           <h1 className="hero__title reveal">COLSABI</h1>
-          <p className="hero__subtitle reveal delay-1">Conoce nuestra misión-visión, instalaciones y quienes conforman nuestro equipo.</p>
+          <p className="hero__subtitle reveal delay-1">Conoce quienes conforman nuestro equipo de trabajo y nuestras promociones.</p>
         </div>
       </section>
-      <section className="section section--alt" id="mision-vision">
-        <div className="container grid grid--2">
-          <div className="reveal">
-            <h2 className="section__title">Misión</h2>
-            <p>Somos una institución educativa católica, de carácter privado, que integra ciencia, fe y vida junto a la familia.</p>
-          </div>
-          <div className="reveal delay-1">
-            <h2 className="section__title">Visión</h2>
-            <p>En 2028 seremos referentes regionales por excelencia educativa, identidad SABIDURÍA e innovación tecnológica.</p>
-          </div>
-        </div>
-      </section>
-      <section className="section section--alt" id="equipo">
+      
+      <section className="section" id="equipo">
         <div className="container">
           <h3 className="section__title">Representante legal</h3>
           <div className="team-grid">
@@ -78,7 +67,8 @@ export default function Colsabi() {
           </div>
         </div>
       </section>
-      <section className="promociones" id="promociones">
+
+      <section className="promociones section--alt" id="promociones">
         <div className="container">
           <h2 className="section__title">Promociones</h2>
           <div className="promociones-grid">
@@ -96,39 +86,8 @@ export default function Colsabi() {
             <div className="promo-card"><img src="/img/Promociones/2022.jpg" alt="Promoción 2022" className="promo-img" /><h3 className="promo-title">Promoción 2022</h3></div>
             <div className="promo-card"><img src="/img/Promociones/2023.jpg" alt="Promoción 2023" className="promo-img" /><h3 className="promo-title">Promoción 2023</h3></div>
             <div className="promo-card"><img src="/img/Promociones/2024.jpg" alt="Promoción 2024" className="promo-img" /><h3 className="promo-title">Promoción 2024</h3></div>
-            <div className="promo-card"><img src="/img/Promociones/20252.jpg" alt="Promoción 2025" className="promo-img" /><h3 className="promo-title">Promoción 2025-1</h3></div>
-            <div className="promo-card"><img src="/img/Promociones/20251.jpg" alt="Promoción 2025" className="promo-img" /><h3 className="promo-title">Promoción 2025-2</h3></div>
-          </div>
-        </div>
-      </section>
-      <section className="section" id="instalaciones">
-        <div className="container">
-          <h2 className="section__title center reveal">Nuestras instalaciones</h2>
-          <div className="instalaciones-grid">
-            <div className="instalacion-card">
-              <div className="mini-carousel">
-                <div className="carousel-track">
-                  <div className="carousel-slide"><img src="/img/instalaciones/20240401073902_IMG_9008.JPG" alt="" /></div>
-                  <div className="carousel-slide"><img src="/img/instalaciones/20240401074948_IMG_9025.JPG" alt="" /></div>
-                  <div className="carousel-slide"><img src="/img/instalaciones/Captura%20de%20pantalla%202025-09-22%20092349.png" alt="" /></div>
-                </div>
-                <button className="control prev">&#10094;</button>
-                <button className="control next">&#10095;</button>
-              </div>
-              <p className="instalacion-text">Sede Acacias Nuestra Señora de la sabiduría</p>
-            </div>
-            <div className="instalacion-card">
-              <div className="mini-carousel">
-                <div className="carousel-track">
-                  <div className="carousel-slide"><img src="/img/instalaciones/_DSC0661.jpg" alt="" /></div>
-                  <div className="carousel-slide"><img src="/img/instalaciones/_DSC0676.jpg" alt="" /></div>
-                  <div className="carousel-slide"><img src="/img/instalaciones/_DSC0682.jpg" alt="" /></div>
-                </div>
-                <button className="control prev">&#10094;</button>
-                <button className="control next">&#10095;</button>
-              </div>
-              <p className="instalacion-text">Espacios y aulas</p>
-            </div>
+            <div className="promo-card"><img src="/img/Promociones/20252.jpg" alt="Promoción 2025-1" className="promo-img" /><h3 className="promo-title">Promoción 2025-1</h3></div>
+            <div className="promo-card"><img src="/img/Promociones/20251.jpg" alt="Promoción 2025-2" className="promo-img" /><h3 className="promo-title">Promoción 2025-2</h3></div>
           </div>
         </div>
       </section>
