@@ -1,203 +1,214 @@
+'use client'
+import Link from 'next/link'
 export default function Home() {
+  
   return (
     <main>
-      <section className="hero hero--image" id="inicio" aria-label="Portada">
-        <div 
-          className="hero__bg" 
-          style={{ 
-            backgroundImage: `linear-gradient(to bottom, rgba(8,59,128,.55), rgba(31,122,62,.35)), url('/img/aaa/sabiduria3.jpg')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }} 
-        />
-        <div className="container hero__content">
-          <div className="hero__badges">
-            <span className="badge">Educación privada católica</span>
-            <span className="badge">Acacías, Meta</span>
+      <div className="blob blob-1"></div>
+      <div className="blob blob-2"></div>
+
+      <section className="hero" id="inicio" aria-label="Portada">
+        <div className="container hero-grid">
+          {/* Lado Izquierdo: Slider de Imágenes Transicionadas */}
+          <div className="hero-slider reveal-up">
+            <img src="/img/aaa/sabiduria3.jpg" alt="Estudiantes" />
+            <img src="/img/instalaciones/20240401073902_IMG_9008.JPG" alt="Evento" />
+            <img src="/img/instalaciones/_DSC0661.jpg" alt="Educación" />
+            <img src="/img/instalaciones/_DSC0676.jpg" alt="Instalaciones" />
           </div>
-          <h1 className="hero__headline">Formación integral para el futuro</h1>
-          <p className="hero__sub">Innovación, valores y excelencia en cada etapa educativa.</p>
+
+          {/* Lado Derecho: Contenido */}
+          <div className="hero__content reveal-up delay-1">
+            <div className="hero__badges">
+              <span className="badge">Educación Privada Católica</span>
+              <span className="badge">Acacías, Meta</span>
+            </div>
+            <p className="hero__quote">“Formando valores para la vida”</p>
+            <h1 className="hero__headline">
+              Formación integral <br/> para el <span className="text-gradient">futuro</span>
+            </h1>
+            <p className="hero__sub">
+              Innovación, principios sólidos y excelencia académica en cada etapa de la vida escolar. Preparando a los líderes del mañana con sabiduría y corazón.
+            </p>
+            <div className="hero__actions">
+               <Link href="#accesos" className="btn btn--accent" style={{ padding: '1rem 2rem', fontSize: '1.1rem', borderRadius: '50px' }}>Descubre más</Link>
+               <Link href="/#contacto" className="btn btn--outline" style={{ padding: '1rem 2rem', fontSize: '1.1rem', borderRadius: '50px' }}>Contáctanos</Link>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="section" id="equipo">
+      <section className="section" id="accesos">
         <div className="container">
-          <h2 className="section__title center reveal">Nuestro Equipo</h2>
+          <div className="reveal-up" style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <h2 className="section__title">Explora nuestra <span>Institución</span></h2>
+            <p style={{ color: 'var(--muted)', fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto' }}>Navega a los apartados más consultados y al nuevo módulo de horas sociales de forma rápida y sencilla.</p>
+          </div>
           
-          <div className="team-carousel-wrapper reveal delay-1">
-            <button className="team-carousel-btn prev" aria-label="Anterior"><i className="fas fa-chevron-left"></i></button>
-            <div className="team-carousel">
-              <div className="team-carousel-track">
-                {/* Representante legal */}
-                <article className="team-card team-slide">
-                  <img src="/img/p/RepresentanteLegal.png" alt="Representante Legal" />
-                  <h4>Hna. Gisela Huertas Torres</h4>
-                  <p className="small">Representante Legal</p>
-                </article>
-                
-                {/* Directivos */}
-                <article className="team-card team-slide">
-                  <img src="/img/p/EDISON ESTEBAN DEJOY MONTILLA .jpg" alt="Rector" />
-                  <h4>Edison Esteban Dejoy Montilla</h4>
-                  <p className="small">Rector</p>
-                </article>
-                <article className="team-card team-slide">
-                  <img src="/img/p/EDY YESID CORREA LEGUIZAMÓN .jpg" alt="Coordinador Académico" />
-                  <h4>Edy Yesid Correa Leguizamón</h4>
-                  <p className="small">Coordinador Académico</p>
-                </article>
-                <article className="team-card team-slide">
-                  <img src="/img/p/CÉSAR AUGUSTO PEÑA RODRÍGUEZ  .jpg" alt="Coordinador de Convivencia" />
-                  <h4>Cesar Augusto Peña Rodriguez</h4>
-                  <p className="small">Coordinador de Convivencia</p>
-                </article>
-                <article className="team-card team-slide">
-                  <img src="/img/p/NUBIA ALEJANDRA REYES HUERTAS  .jpg" alt="Psicoorientadora" />
-                  <h4>Nubia Alejandra Reyes Huertas</h4>
-                  <p className="small">Psicoorientadora</p>
-                </article>
-
-                {/* Administrativos */}
-                <article className="team-card team-slide">
-                  <img src="/img/p/ALEXANDER CRUZ CARDONA .jpg" alt="Lider SST" />
-                  <h4>Alexander Cruz Cardona</h4>
-                  <p className="small">Lider SST</p>
-                </article>
-                <article className="team-card team-slide">
-                  <img src="/img/p/LEANDRO POLANÍA YOIMAN .jpg" alt="Auxiliar Contable" />
-                  <h4>Leandro Polanía Yoiman</h4>
-                  <p className="small">Auxiliar Contable</p>
-                </article>
-                <article className="team-card team-slide">
-                  <img src="/img/p/RUBY ANDREA ROJAS MUÑOZ .jpg" alt="Contadora" />
-                  <h4>Ruby Andrea Rojas Muñoz</h4>
-                  <p className="small">Contadora</p>
-                </article>
-                <article className="team-card team-slide">
-                  <img src="/img/p/VIVIANA MARTÍNEZ ACUÑA .jpg" alt="Secretaria Académica" />
-                  <h4>Viviana Martínez Acuña</h4>
-                  <p className="small">Secretaria Académica</p>
-                </article>
+          <div className="quick-grid">
+            <Link className="quick-card reveal-up delay-1" href="/postular-escenario">
+              <span className="quick-card__icon"><i className="fa-solid fa-briefcase"></i></span>
+              <div>
+                <strong>Postular escenario</strong>
+                <span>Registra una propuesta de práctica</span>
               </div>
-            </div>
-            <button className="team-carousel-btn next" aria-label="Siguiente"><i className="fas fa-chevron-right"></i></button>
+            </Link>
+            <Link className="quick-card reveal-up delay-2" href="/ingreso">
+              <span className="quick-card__icon" style={{ background: 'linear-gradient(135deg, var(--success), var(--success-700))'}}><i className="fa-solid fa-user-clock"></i></span>
+              <div>
+                <strong>Horas Sociales</strong>
+                <span>Módulo administrativo</span>
+              </div>
+            </Link>
+            <Link className="quick-card reveal-up delay-3" href="/convenios">
+              <span className="quick-card__icon" style={{ background: 'linear-gradient(135deg, var(--accent), #d97706)'}}><i className="fa-solid fa-handshake"></i></span>
+              <div>
+                <strong>Convenios</strong>
+                <span>Alianzas universitarias</span>
+              </div>
+            </Link>
+            <Link className="quick-card reveal-up delay-1" href="/peahs">
+              <span className="quick-card__icon"><i className="fa-solid fa-seedling"></i></span>
+              <div>
+                <strong>PEAHS</strong>
+                <span>Pastoral y proyectos</span>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
 
       <section className="section section--alt" id="mision-vision">
-        <div className="container grid grid--2">
-          <div className="reveal">
-            <h2 className="section__title">Misión</h2>
-            <p>Somos una institución educativa católica, de carácter privado, que integra ciencia, fe y vida junto a la familia.</p>
+        <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', alignItems: 'center' }}>
+          <div className="reveal-up">
+            <h2 className="section__title">Nuestra <span>Misión</span></h2>
+            <p style={{ fontSize: '1.15rem', color: 'var(--muted)', lineHeight: '1.8' }}>
+              Somos una institución educativa católica, de carácter privado, que integra ciencia, fe y vida junto a la familia. Buscamos formar seres humanos íntegros, con valores y principios sólidos, capaces de transformar su entorno con amor y sabiduría.
+            </p>
           </div>
-          <div className="reveal delay-1">
-            <h2 className="section__title">Visión</h2>
-            <p>En 2028 seremos referentes regionales por excelencia educativa, identidad SABIDURÍA e innovación tecnológica.</p>
+          <div className="reveal-up delay-1">
+            <h2 className="section__title">Nuestra <span>Visión</span></h2>
+            <p style={{ fontSize: '1.15rem', color: 'var(--muted)', lineHeight: '1.8' }}>
+              En 2028 seremos referentes regionales por excelencia educativa, identidad SABIDURÍA e innovación tecnológica, proyectando a nuestros estudiantes como líderes éticos y competentes para los desafíos globales.
+            </p>
           </div>
         </div>
       </section>
 
-      <section className="section" id="instalaciones">
+      <section className="section" id="equipo">
         <div className="container">
-          <h2 className="section__title center reveal">Nuestras instalaciones</h2>
-          <div className="instalaciones-grid">
-            <div className="instalacion-card">
-              <div className="mini-carousel">
-                <div className="carousel-track">
-                  <div className="carousel-slide"><img src="/img/instalaciones/20240401073902_IMG_9008.JPG" alt="" /></div>
-                  <div className="carousel-slide"><img src="/img/instalaciones/20240401074948_IMG_9025.JPG" alt="" /></div>
-                  <div className="carousel-slide"><img src="/img/instalaciones/Captura%20de%20pantalla%202025-09-22%20092349.png" alt="" /></div>
-                </div>
-                <button className="control prev">&#10094;</button>
-                <button className="control next">&#10095;</button>
+          <h2 className="section__title center reveal-up">Nuestro <span>Equipo</span></h2>
+          <p className="reveal-up delay-1" style={{ textAlign: 'center', color: 'var(--muted)', fontSize: '1.2rem', marginBottom: '3rem' }}>Profesionales dedicados al crecimiento y bienestar de nuestros estudiantes.</p>
+          
+          <div className="team-grid reveal-up delay-2">
+            <article className="team-card">
+              <img src="/img/p/RepresentanteLegal.png" alt="Representante Legal" />
+              <h4>Hna. Gisela Huertas Torres</h4>
+              <p className="small">Representante Legal</p>
+            </article>
+            <article className="team-card">
+              <img src="/img/p/EDISON ESTEBAN DEJOY MONTILLA .jpg" alt="Rector" />
+              <h4>Edison Esteban Dejoy Montilla</h4>
+              <p className="small">Rector</p>
+            </article>
+            <article className="team-card">
+              <img src="/img/p/EDY YESID CORREA LEGUIZAMÓN .jpg" alt="Coordinador Académico" />
+              <h4>Edy Yesid Correa Leguizamón</h4>
+              <p className="small">Coordinador Académico</p>
+            </article>
+            <article className="team-card">
+              <img src="/img/p/NUBIA ALEJANDRA REYES HUERTAS  .jpg" alt="Psicoorientadora" />
+              <h4>Nubia Alejandra Reyes Huertas</h4>
+              <p className="small">Psicoorientadora</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section--alt" id="instalaciones">
+        <div className="container">
+          <h2 className="section__title center reveal-up">Nuestras <span>Instalaciones</span></h2>
+          <p className="reveal-up delay-1" style={{ textAlign: 'center', color: 'var(--muted)', fontSize: '1.2rem', marginBottom: '3rem' }}>Espacios diseñados para inspirar, aprender y crecer en comunidad.</p>
+          
+          <div className="instalaciones-grid reveal-up delay-2">
+            <div className="instalacion-card" style={{ padding: 0, overflow: 'hidden', borderRadius: '24px' }}>
+              <img src="/img/instalaciones/20240401073902_IMG_9008.JPG" alt="Sede Acacias" style={{ height: '250px', width: '100%', objectFit: 'cover' }} />
+              <div style={{ padding: '1.5rem' }}>
+                <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.2rem' }}>Sede Acacías</h3>
+                <p style={{ margin: 0, color: 'var(--muted)' }}>Nuestra Señora de la Sabiduría</p>
               </div>
-              <p className="instalacion-text">Sede Acacias Nuestra Señora de la sabiduría</p>
             </div>
-            <div className="instalacion-card">
-              <div className="mini-carousel">
-                <div className="carousel-track">
-                  <div className="carousel-slide"><img src="/img/instalaciones/_DSC0661.jpg" alt="" /></div>
-                  <div className="carousel-slide"><img src="/img/instalaciones/_DSC0676.jpg" alt="" /></div>
-                  <div className="carousel-slide"><img src="/img/instalaciones/_DSC0682.jpg" alt="" /></div>
-                </div>
-                <button className="control prev">&#10094;</button>
-                <button className="control next">&#10095;</button>
+            <div className="instalacion-card" style={{ padding: 0, overflow: 'hidden', borderRadius: '24px' }}>
+              <img src="/img/instalaciones/_DSC0661.jpg" alt="Espacios" style={{ height: '250px', width: '100%', objectFit: 'cover' }} />
+              <div style={{ padding: '1.5rem' }}>
+                <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.2rem' }}>Espacios y aulas</h3>
+                <p style={{ margin: 0, color: 'var(--muted)' }}>Entornos modernos y seguros</p>
               </div>
-              <p className="instalacion-text">Espacios y aulas</p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section section--alt" id="universidades">
-        <div className="container">
-          <h2 className="section__title center reveal">Convenios con Universidades</h2>
-          <div className="fila-universidades fila-grande">
-            <a href="https://www.uexternado.edu.co/" target="_blank" className="universidad-card wide">
-              <img src="/img/convenios/U/EXTERNADO.png" alt="Universidad Externado" />
-              <p>Universidad Externado de Colombia</p>
-            </a>
-            <a href="https://www.ustavillavicencio.edu.co/" target="_blank" className="universidad-card wide">
-              <img src="/img/convenios/U/USTA.png" alt="Universidad Santo Tomás" />
-              <p>Universidad Santo Tomás</p>
-            </a>
-          </div>
-          <div className="fila-universidades fila-pequena">
-            <a href="https://www.sena.edu.co/es-co/Paginas/default.aspx" target="_blank" className="universidad-card">
-              <img src="/img/convenios/U/SENA.png" alt="SENA" />
-              <p>SENA (Servicio Nacional de Aprendizaje)</p>
-            </a>
-            <a href="https://www.unad.edu.co/" target="_blank" className="universidad-card">
-              <img src="/img/convenios/U/UNAD.png" alt="UNAD" />
-              <p>Universidad Nacional Abierta y a Distancia (UNAD)</p>
-            </a>
-            <a href="https://www.uniminuto.edu/" target="_blank" className="universidad-card">
-              <img src="/img/convenios/U/UNIMINUTO.png" alt="UNIMINUTO" />
-              <p>Corporación Universitaria Minuto de Dios (UNIMINUTO)</p>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section className="promociones section--alt" id="promociones">
-        <div className="container">
-          <h2 className="section__title center reveal">Promociones</h2>
-          <div className="promociones-grid">
-            <div className="promo-card"><img src="/img/Promociones/2010.jpg" alt="Promoción 2010" className="promo-img" /><h3 className="promo-title">Promoción 2010</h3></div>
-            <div className="promo-card"><img src="/img/Promociones/2011.png" alt="Promoción 2011" className="promo-img" /><h3 className="promo-title">Promoción 2011</h3></div>
-            <div className="promo-card"><img src="/img/Promociones/2012.png" alt="Promoción 2012" className="promo-img" /><h3 className="promo-title">Promoción 2012</h3></div>
-            <div className="promo-card"><img src="/img/Promociones/2013.png" alt="Promoción 2013" className="promo-img" /><h3 className="promo-title">Promoción 2013</h3></div>
-            <div className="promo-card"><img src="/img/Promociones/2014.png" alt="Promoción 2014" className="promo-img" /><h3 className="promo-title">Promoción 2014</h3></div>
-            <div className="promo-card"><img src="/img/Promociones/2015.png" alt="Promoción 2015" className="promo-img" /><h3 className="promo-title">Promoción 2015</h3></div>
-            <div className="promo-card"><img src="/img/Promociones/2017.jpg" alt="Promoción 2017" className="promo-img" /><h3 className="promo-title">Promoción 2017</h3></div>
-            <div className="promo-card"><img src="/img/Promociones/2018.png" alt="Promoción 2018" className="promo-img" /><h3 className="promo-title">Promoción 2018</h3></div>
-            <div className="promo-card"><img src="/img/Promociones/2019.png" alt="Promoción 2019" className="promo-img" /><h3 className="promo-title">Promoción 2019</h3></div>
-            <div className="promo-card"><img src="/img/Promociones/2020.jpg" alt="Promoción 2020" className="promo-img" /><h3 className="promo-title">Promoción 2020</h3></div>
-            <div className="promo-card"><img src="/img/Promociones/2021.png" alt="Promoción 2021" className="promo-img" /><h3 className="promo-title">Promoción 2021</h3></div>
-            <div className="promo-card"><img src="/img/Promociones/2022.jpg" alt="Promoción 2022" className="promo-img" /><h3 className="promo-title">Promoción 2022</h3></div>
-            <div className="promo-card"><img src="/img/Promociones/2023.jpg" alt="Promoción 2023" className="promo-img" /><h3 className="promo-title">Promoción 2023</h3></div>
-            <div className="promo-card"><img src="/img/Promociones/2024.jpg" alt="Promoción 2024" className="promo-img" /><h3 className="promo-title">Promoción 2024</h3></div>
-            <div className="promo-card"><img src="/img/Promociones/20252.jpg" alt="Promoción 2025-1" className="promo-img" /><h3 className="promo-title">Promoción 2025-1</h3></div>
-            <div className="promo-card"><img src="/img/Promociones/20251.jpg" alt="Promoción 2025-2" className="promo-img" /><h3 className="promo-title">Promoción 2025-2</h3></div>
+            <div className="instalacion-card" style={{ padding: 0, overflow: 'hidden', borderRadius: '24px' }}>
+              <img src="/img/instalaciones/_DSC0676.jpg" alt="Recreación" style={{ height: '250px', width: '100%', objectFit: 'cover' }} />
+              <div style={{ padding: '1.5rem' }}>
+                <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.2rem' }}>Zonas verdes</h3>
+                <p style={{ margin: 0, color: 'var(--muted)' }}>Contacto con la naturaleza</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="section" id="contacto">
-        <div className="container grid grid--2">
-          <div className="reveal">
-            <h2 className="section__title">Contacto</h2>
-            <p>¿Tienes dudas sobre procesos de admisión o convenios? Escríbenos y con gusto te ayudamos.</p>
-            <ul className="contact">
-              <li><strong>Horario:</strong> Lunes a Jueves de 7:00 a.m. – 4:00 p.m. Viernes de 7:00 a.m. - 1:30 p.m.</li>
-            </ul>
+        <div className="container">
+          <div className="reveal-up" style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <h2 className="section__title">Estamos aquí para <span>Ayudarte</span></h2>
+            <p style={{ fontSize: '1.15rem', color: 'var(--muted)', maxWidth: '800px', margin: '0 auto', lineHeight: '1.8' }}>
+              ¿Tienes dudas sobre procesos de admisión, convenios o el nuevo módulo de horas sociales? Visítanos, escríbenos o inicia tu proceso fácilmente.
+            </p>
           </div>
-          <div className="form reveal delay-1">
-            <h3 style={{ color: 'var(--primary)', marginBottom: '1.5rem' }}>ADMISIONES</h3>
-            <div className="form-embed"></div>
-            <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=2gvX0nJp7E6sr4u-IJHSa2F-8nfwliFHqoZ8HhAKQy1UOVEzM0ROMkhZREJRMlhCRzVKQUtNWlJNSi4u" target="_blank" className="btn btn--form">Abrir formulario completo</a>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem', alignItems: 'stretch' }}>
+            
+            {/* Tarjeta de Información */}
+            <div className="reveal-up delay-1" style={{ padding: '2.5rem', background: 'var(--surface-blue)', borderRadius: '30px', display: 'flex', flexDirection: 'column', gap: '2rem', border: '1px solid rgba(2, 132, 199, 0.1)' }}>
+              <div>
+                <h3 style={{ margin: '0 0 0.5rem', color: 'var(--primary-600)', display: 'flex', alignItems: 'center', gap: '0.8rem' }}><i className="fa-solid fa-location-dot"></i> Nuestra Ubicación</h3>
+                <p style={{ margin: 0, color: 'var(--muted)' }}>Acacías, Meta, Colombia<br/>Colegio Nuestra Señora de la Sabiduría</p>
+              </div>
+              <div>
+                <h3 style={{ margin: '0 0 0.5rem', color: 'var(--primary-600)', display: 'flex', alignItems: 'center', gap: '0.8rem' }}><i className="fa-regular fa-clock"></i> Horario de Atención</h3>
+                <p style={{ margin: 0, color: 'var(--muted)' }}>Lunes a Jueves: 7:00 a.m. – 4:00 p.m.<br/>Viernes: 7:00 a.m. - 1:30 p.m.</p>
+              </div>
+              <div>
+                <h3 style={{ margin: '0 0 0.5rem', color: 'var(--primary-600)', display: 'flex', alignItems: 'center', gap: '0.8rem' }}><i className="fa-solid fa-phone"></i> Contacto Rápido</h3>
+                <p style={{ margin: 0, color: 'var(--muted)' }}>info@colsabi.edu.co</p>
+              </div>
+            </div>
+
+            {/* Mapa Interactivo */}
+            <div className="reveal-up delay-2" style={{ borderRadius: '30px', overflow: 'hidden', boxShadow: 'var(--shadow)', minHeight: '350px', position: 'relative', border: '1px solid rgba(2, 132, 199, 0.1)' }}>
+              <iframe 
+                src="https://maps.google.com/maps?q=Colegio%20Nuestra%20Se%C3%B1ora%20de%20la%20Sabidur%C3%ADa%20Acacias&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0, position: 'absolute', top: 0, left: 0 }} 
+                allowFullScreen="" 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Mapa de ubicación del colegio"
+              ></iframe>
+            </div>
+
+            {/* Tarjeta de Admisiones */}
+            <div className="reveal-up delay-3" style={{ padding: '2.5rem', background: 'var(--card)', borderRadius: '30px', boxShadow: 'var(--shadow-hover)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', border: '1px solid rgba(2, 132, 199, 0.1)' }}>
+              <div style={{ width: '80px', height: '80px', background: 'var(--surface-green)', color: 'var(--success)', borderRadius: '50%', display: 'grid', placeItems: 'center', fontSize: '2.5rem', marginBottom: '1.5rem' }}>
+                <i className="fa-solid fa-file-signature"></i>
+              </div>
+              <h3 style={{ color: 'var(--primary-600)', marginBottom: '1rem', fontSize: '1.6rem' }}>Proceso de Admisiones</h3>
+              <p style={{ color: 'var(--muted)', marginBottom: '2rem' }}>Inicia el proceso llenando nuestro formulario oficial. Es rápido y seguro.</p>
+              <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=2gvX0nJp7E6sr4u-IJHSa2F-8nfwliFHqoZ8HhAKQy1UOVEzM0ROMkhZREJRMlhCRzVKQUtNWlJNSi4u" target="_blank" rel="noopener noreferrer" className="btn btn--accent" style={{ display: 'block', width: '100%', padding: '1.2rem', fontSize: '1.1rem', borderRadius: '50px' }}>
+                Abrir formulario <i className="fa-solid fa-arrow-up-right-from-square" style={{ marginLeft: '0.5rem' }}></i>
+              </a>
+            </div>
+
           </div>
         </div>
       </section>

@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 const associatedStats = [
   { label: 'Escenario asignado', value: '01' },
   { label: 'Estudiantes activos', value: '24' },
@@ -18,9 +20,9 @@ export default function AsociadoPage() {
             </div>
           </div>
           <nav className="workspace-nav">
-            <a href="/asociado" className="active">Resumen</a>
-            <a href="/ingreso">Cambiar acceso</a>
-            <a href="/">Sitio institucional</a>
+            <Link href="/asociado" className="active">Resumen</Link>
+            <Link href="/ingreso">Cambiar acceso</Link>
+            <Link href="/">Sitio institucional</Link>
           </nav>
         </aside>
         <section className="workspace-main">
@@ -29,7 +31,7 @@ export default function AsociadoPage() {
               <span className="workspace-topbar__eyebrow">Asociado</span>
               <h1>Auditoría y seguimiento del escenario</h1>
             </div>
-            <a href="/postular-escenario" className="workspace-btn workspace-btn--primary">Postular nuevo escenario</a>
+            <Link href="/postular-escenario" className="workspace-btn workspace-btn--primary">Postular nuevo escenario</Link>
           </header>
           <div className="workspace-grid workspace-grid--cards">
             {associatedStats.map((card) => (

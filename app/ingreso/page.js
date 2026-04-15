@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function IngresoPage() {
   return (
     <main className="workspace-auth">
@@ -10,8 +12,8 @@ export default function IngresoPage() {
             auditar el cumplimiento de horas sociales.
           </p>
           <div className="workspace-auth__actions">
-            <a href="/admin" className="workspace-btn workspace-btn--primary">Ingreso administrador</a>
-            <a href="/asociado" className="workspace-btn workspace-btn--ghost">Ingreso asociado</a>
+            <Link href="/admin" className="workspace-btn workspace-btn--primary">Ingreso administrador</Link>
+            <Link href="/asociado" className="workspace-btn workspace-btn--ghost">Ingreso asociado</Link>
           </div>
         </div>
         <div className="workspace-auth__card">

@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function PostularEscenarioPage() {
   return (
     <main className="workspace-page workspace-page--public">
@@ -12,7 +14,7 @@ export default function PostularEscenarioPage() {
               acceso del asociado.
             </p>
           </div>
-          <a href="/ingreso" className="workspace-btn workspace-btn--ghost">Ingreso administrativo</a>
+          <Link href="/ingreso" className="workspace-btn workspace-btn--ghost">Ingreso administrativo</Link>
         </div>
       </section>
       <section className="container workspace-public-grid">

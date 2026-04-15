@@ -28,15 +28,15 @@ window.addEventListener('scroll', () => {
 toTop?.addEventListener('click', () =>
   window.scrollTo({ top: 0, behavior: 'smooth' })
 );
-const reveals = document.querySelectorAll('.reveal');
+const reveals = document.querySelectorAll('.reveal, .reveal-up');
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
-      e.target.classList.add('visible');
+      e.target.classList.add('visible', 'is-visible');
       io.unobserve(e.target);
     }
   });
-}, { threshold: 0.15 });
+}, { threshold: 0.1 });
 reveals.forEach(el => io.observe(el));
 document.querySelectorAll('.carousel').forEach(carousel => {
   const track = carousel.querySelector('.carousel__track');

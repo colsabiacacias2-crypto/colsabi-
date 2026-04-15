@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 const summaryCards = [
   { label: 'Postulaciones pendientes', value: '12', accent: 'blue' },
   { label: 'Escenarios activos', value: '08', accent: 'green' },
@@ -26,9 +28,9 @@ export default function AdminPage() {
             </div>
           </div>
           <nav className="workspace-nav">
-            <a href="/admin" className="active">Dashboard</a>
-            <a href="/postular-escenario">Postulaciones públicas</a>
-            <a href="/ingreso">Centro de acceso</a>
+            <Link href="/admin" className="active">Dashboard</Link>
+            <Link href="/postular-escenario">Postulaciones públicas</Link>
+            <Link href="/ingreso">Centro de acceso</Link>
           </nav>
         </aside>
         <section className="workspace-main">
@@ -37,7 +39,7 @@ export default function AdminPage() {
               <span className="workspace-topbar__eyebrow">Administrador único</span>
               <h1>Control central del sistema</h1>
             </div>
-            <a href="/" className="workspace-btn workspace-btn--ghost">Volver al sitio</a>
+            <Link href="/" className="workspace-btn workspace-btn--ghost">Volver al sitio</Link>
           </header>
           <div className="workspace-grid workspace-grid--cards">
             {summaryCards.map((card) => (

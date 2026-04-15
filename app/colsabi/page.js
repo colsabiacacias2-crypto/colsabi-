@@ -1,26 +1,33 @@
 export default function Colsabi() {
   return (
     <main>
-      <section className="hero" id="convenios" aria-label="Portada de convenios">
-        <div className="hero__bg"></div>
-        <div className="container hero__content">
-          <h1 className="hero__title reveal">COLSABI</h1>
-          <p className="hero__subtitle reveal delay-1">Conoce quienes conforman nuestro equipo de trabajo y nuestras promociones.</p>
+      <section className="page-hero" id="convenios" aria-label="Portada de convenios">
+        <div className="container">
+          <h1 className="page-hero__title reveal-up">COLSABI</h1>
+          <p className="page-hero__subtitle reveal-up delay-1">Conoce a nuestro dedicado equipo de trabajo y celebra las promociones que han marcado nuestra historia.</p>
         </div>
       </section>
       
       <section className="section" id="equipo">
         <div className="container">
-          <h3 className="section__title">Representante legal</h3>
-          <div className="team-grid">
+          <div className="reveal-up" style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <h2 className="section__title">Nuestro <span>Equipo</span></h2>
+            <p style={{ color: 'var(--muted)', fontSize: '1.15rem', maxWidth: '700px', margin: '0 auto' }}>
+              Profesionales comprometidos con la excelencia académica y la formación integral.
+            </p>
+          </div>
+
+          <h3 className="section__title" style={{ fontSize: '1.5rem', marginTop: '2rem' }}>Representante legal</h3>
+          <div className="team-grid reveal-up delay-1">
             <article className="team-card" data-name="Hna. Gisela Huertas Torres" data-role="Representante Legal">
               <img src="/img/p/RepresentanteLegal.png" alt="Representante Legal" />
               <h4>Hna. Gisela Huertas Torres</h4>
               <p className="small">Representante Legal</p>
             </article>
           </div>
-          <h3 className="section__title">Directivos</h3>
-          <div className="team-grid">
+          
+          <h3 className="section__title" style={{ fontSize: '1.5rem', marginTop: '3rem' }}>Directivos</h3>
+          <div className="team-grid reveal-up delay-2">
             <article className="team-card" data-name="Edison Esteban Dejoy Montilla" data-role="Rector">
               <img src="/img/p/EDISON ESTEBAN DEJOY MONTILLA .jpg" alt="Rector" />
               <h4>Edison Esteban Dejoy Montilla</h4>
@@ -42,8 +49,9 @@ export default function Colsabi() {
               <p className="small">Psicoorientadora</p>
             </article>
           </div>
-          <h3 className="section__title">Administrativos</h3>
-          <div className="team-grid">
+
+          <h3 className="section__title" style={{ fontSize: '1.5rem', marginTop: '3rem' }}>Administrativos</h3>
+          <div className="team-grid reveal-up delay-3">
             <article className="team-card" data-name="Alexander Cruz Cardona " data-role="Lider SST">
               <img src="/img/p/ALEXANDER CRUZ CARDONA .jpg" alt="Lider SST" />
               <h4>Alexander Cruz Cardona</h4>
@@ -70,8 +78,13 @@ export default function Colsabi() {
 
       <section className="promociones section--alt" id="promociones">
         <div className="container">
-          <h2 className="section__title">Promociones</h2>
-          <div className="promociones-grid">
+          <div className="reveal-up" style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <h2 className="section__title">Nuestras <span>Promociones</span></h2>
+            <p style={{ color: 'var(--muted)', fontSize: '1.15rem', maxWidth: '700px', margin: '0 auto' }}>
+              Generaciones de estudiantes que han dejado huella en nuestra institución.
+            </p>
+          </div>
+          <div className="promociones-grid reveal-up delay-1">
             <div className="promo-card"><img src="/img/Promociones/2010.jpg" alt="Promoción 2010" className="promo-img" /><h3 className="promo-title">Promoción 2010</h3></div>
             <div className="promo-card"><img src="/img/Promociones/2011.png" alt="Promoción 2011" className="promo-img" /><h3 className="promo-title">Promoción 2011</h3></div>
             <div className="promo-card"><img src="/img/Promociones/2012.png" alt="Promoción 2012" className="promo-img" /><h3 className="promo-title">Promoción 2012</h3></div>
