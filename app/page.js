@@ -165,7 +165,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem', alignItems: 'stretch' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem', alignItems: 'stretch', marginBottom: '2.5rem' }}>
             
             {/* Tarjeta de Información */}
             <div className="reveal-up delay-1" style={{ padding: '2.5rem', background: 'var(--surface-blue)', borderRadius: '30px', display: 'flex', flexDirection: 'column', gap: '2rem', border: '1px solid rgba(2, 132, 199, 0.1)' }}>
@@ -183,22 +183,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Mapa Interactivo */}
-            <div className="reveal-up delay-2" style={{ borderRadius: '30px', overflow: 'hidden', boxShadow: 'var(--shadow)', minHeight: '350px', position: 'relative', border: '1px solid rgba(2, 132, 199, 0.1)' }}>
-              <iframe 
-                src="https://maps.google.com/maps?q=Colegio%20Nuestra%20Se%C3%B1ora%20de%20la%20Sabidur%C3%ADa%20Acacias&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0, position: 'absolute', top: 0, left: 0 }} 
-                allowFullScreen="" 
-                loading="lazy" 
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Mapa de ubicación del colegio"
-              ></iframe>
-            </div>
-
             {/* Tarjeta de Admisiones */}
-            <div className="reveal-up delay-3" style={{ padding: '2.5rem', background: 'var(--card)', borderRadius: '30px', boxShadow: 'var(--shadow-hover)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', border: '1px solid rgba(2, 132, 199, 0.1)' }}>
+            <div className="reveal-up delay-2" style={{ padding: '2.5rem', background: 'var(--card)', borderRadius: '30px', boxShadow: 'var(--shadow-hover)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', border: '1px solid rgba(2, 132, 199, 0.1)' }}>
               <div style={{ width: '80px', height: '80px', background: 'var(--surface-green)', color: 'var(--success)', borderRadius: '50%', display: 'grid', placeItems: 'center', fontSize: '2.5rem', marginBottom: '1.5rem' }}>
                 <i className="fa-solid fa-file-signature"></i>
               </div>
@@ -209,6 +195,20 @@ export default function Home() {
               </a>
             </div>
 
+          </div>
+
+          {/* Mapa Interactivo Full Width */}
+          <div className="reveal-up delay-3" style={{ borderRadius: '30px', overflow: 'hidden', boxShadow: 'var(--shadow)', height: '450px', position: 'relative', border: '1px solid rgba(2, 132, 199, 0.1)', background: '#e2e8f0' }}>
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.2038760086835!2d-73.7635639!3d3.9879105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3e10fae00b8f41%3A0xc3910c2ebf2eb6e5!2sColegio%20Nuestra%20Se%C3%B1ora%20de%20la%20Sabidur%C3%ADa!5e0!3m2!1ses!2sco!4v1715000000000!5m2!1ses!2sco" 
+              width="100%" 
+              height="100%" 
+              style={{ border: 0, position: 'absolute', top: 0, left: 0 }} 
+              allowFullScreen="" 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Mapa de ubicación del colegio"
+            ></iframe>
           </div>
         </div>
       </section>
