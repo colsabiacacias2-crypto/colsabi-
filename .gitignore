@@ -1,10 +1,4 @@
-node_modules/
-.next/
-.turbo/
-.vercel/
-out/
-coverage/
-
+# Environment variables
 .env
 .env.*
 .env.local
@@ -14,28 +8,47 @@ coverage/
 .env.test.local
 .envrc
 
-.DS_Store
-Thumbs.db
+# Secrets and Keys
+*.pem
+*.key
+*.crt
+secrets.json
+
+# Dependencies
+node_modules/
+.pnpm-store/
+.npmrc
+
+# Next.js
+.next/
+out/
+.vercel/
+
+# Build and Temp
+.turbo/
+coverage/
+*.log
+*.tmp
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# OS and Editor
+.DS_Store
+Thumbs.db
 .vscode/
 .idea/
 .trae/
-.npmrc
-.pnpm-store/
 
+# Database (Local)
 prisma/dev.db
 prisma/dev.db-journal
 prisma/*.db
 prisma/*.db-journal
+
+# Supabase
 supabase/.temp/
 supabase/.branches/
-
-*.log
-*.tmp
-*.pem
-*.key
-*.crt
+supabase/.env
+supabase/.env.*

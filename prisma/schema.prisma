@@ -94,6 +94,7 @@ model PracticeScenario {
   createdAt              DateTime                   @default(now())
   updatedAt              DateTime                   @updatedAt
   manager                User?                      @relation("ScenarioManager", fields: [managerUserId], references: [id])
+  application            ScenarioApplication?
   studentAssignments     StudentScenarioAssignment[]
   hourEntries            SocialHourEntry[]
 }

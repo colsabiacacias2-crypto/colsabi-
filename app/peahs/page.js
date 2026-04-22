@@ -28,7 +28,7 @@ export default function Peahs() {
           <div className="reveal-up" style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <h2 className="section__title">Nuestro <span>Objetivo</span></h2>
             <p style={{ color: 'var(--muted)', fontSize: '1.25rem', maxWidth: '800px', margin: '0 auto', fontStyle: 'italic' }}>
-              "Brindar una formación integral fortaleciendo las capacidades intelectuales, afectivas, sociales y trascendentales desde un enfoque profundamente humanizante."
+              &quot;Brindar una formación integral fortaleciendo las capacidades intelectuales, afectivas, sociales y trascendentales desde un enfoque profundamente humanizante.&quot;
             </p>
           </div>
         </div>
@@ -79,7 +79,7 @@ export default function Peahs() {
               </div>
               <div className="proyecto-texto">
                 <h3 style={{ color: 'var(--primary-600)', fontSize: '1.4rem', marginBottom: '0.5rem' }}>PASTORAL EDUCATIVA ACADÉMICA HUMANIZANTE</h3>
-                <p style={{ color: 'var(--muted)', fontSize: '1.1rem' }}>"Humanidad Educad Educar Humanizando"</p>
+                <p style={{ color: 'var(--muted)', fontSize: '1.1rem' }}>&quot;Humanidad Educad Educar Humanizando&quot;</p>
                 <p style={{ color: 'var(--accent)', fontWeight: 'bold' }}>2025-2028</p>
               </div>
             </div>

@@ -1,0 +1,14 @@
+# Supabase temporary files
+.branches
+.temp
+
+# dotenvx / Secrets
+.env
+.env.*
+.env.keys
+.env.local
+.env.*.local
+*.pem
+*.key
+*.crt
+secrets.json
