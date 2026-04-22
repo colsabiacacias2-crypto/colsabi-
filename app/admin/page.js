@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import LogoutButton from '../components/LogoutButton'
 
 const summaryCards = [
   { label: 'Postulaciones pendientes', value: '12', accent: 'blue' },
@@ -19,7 +20,7 @@ export default function AdminPage() {
   return (
     <main className="workspace-page">
       <section className="workspace-shell">
-        <aside className="workspace-sidebar">
+        <aside className="workspace-sidebar" style={{ display: 'flex', flexDirection: 'column' }}>
           <div className="workspace-brand">
             <img src="/img/aaa/logo.png" alt="Logo COLSABI" />
             <div>
@@ -27,10 +28,14 @@ export default function AdminPage() {
               <span>Horas sociales</span>
             </div>
           </div>
-          <nav className="workspace-nav">
+          <nav className="workspace-nav" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
             <Link href="/admin" className="active">Dashboard</Link>
             <Link href="/postular-escenario">Postulaciones públicas</Link>
-            <Link href="/ingreso">Centro de acceso</Link>
+            <Link href="/">Volver al sitio público</Link>
+            
+            <div style={{ marginTop: 'auto', paddingTop: '2rem' }}>
+              <LogoutButton />
+            </div>
           </nav>
         </aside>
         <section className="workspace-main">
