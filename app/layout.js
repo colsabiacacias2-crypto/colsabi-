@@ -7,6 +7,16 @@ export const metadata = {
   description: 'Colegio Nuestra Señora de la Sabiduría'
 }
 
+const socialLinks = {
+  facebook: process.env.NEXT_PUBLIC_FACEBOOK_URL || "https://www.facebook.com/colsabi.acacias.7?locale=es_LA",
+  instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/colsabi_acacias/",
+  tiktok: process.env.NEXT_PUBLIC_TIKTOK_URL || "https://www.tiktok.com/@colsabi.acacas?_t=ZS-90i3QU7od1M&_r=1",
+  youtube: process.env.NEXT_PUBLIC_YOUTUBE_URL || "https://www.youtube.com/@rectoriacolsabiacacias5312",
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_URL || "https://wa.me/573000000000",
+  phone: process.env.NEXT_PUBLIC_PHONE_NUMBER || "+573000000000",
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "info@colsabi.edu.co"
+}
+
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
@@ -21,34 +31,34 @@ export default function RootLayout({ children }) {
       <body>
         {/* Floating Sidebars (Globales en todas las páginas) */}
         <div className="floating-social right">
-          <a href="https://www.facebook.com/colsabi.acacias.7?locale=es_LA" target="_blank" rel="noopener noreferrer" className="fs-icon fs-facebook" aria-label="Facebook">
+          <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" className="fs-icon fs-facebook" aria-label="Facebook">
             <i className="fab fa-facebook-f"></i>
             <span className="fs-tooltip">Facebook</span>
           </a>
-          <a href="https://www.instagram.com/colsabi_acacias/" target="_blank" rel="noopener noreferrer" className="fs-icon fs-instagram" aria-label="Instagram">
+          <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="fs-icon fs-instagram" aria-label="Instagram">
             <i className="fab fa-instagram"></i>
             <span className="fs-tooltip">Instagram</span>
           </a>
-          <a href="https://www.tiktok.com/@colsabi.acacas?_t=ZS-90i3QU7od1M&_r=1" target="_blank" rel="noopener noreferrer" className="fs-icon fs-tiktok" aria-label="TikTok">
+          <a href={socialLinks.tiktok} target="_blank" rel="noopener noreferrer" className="fs-icon fs-tiktok" aria-label="TikTok">
             <i className="fab fa-tiktok"></i>
             <span className="fs-tooltip">TikTok</span>
           </a>
-          <a href="https://www.youtube.com/@rectoriacolsabiacacias5312" target="_blank" rel="noopener noreferrer" className="fs-icon fs-youtube" aria-label="YouTube">
+          <a href={socialLinks.youtube} target="_blank" rel="noopener noreferrer" className="fs-icon fs-youtube" aria-label="YouTube">
             <i className="fab fa-youtube"></i>
             <span className="fs-tooltip">YouTube</span>
           </a>
         </div>
 
         <div className="floating-social left">
-          <a href="https://wa.me/573000000000" target="_blank" rel="noopener noreferrer" className="fs-icon fs-whatsapp" aria-label="WhatsApp">
+          <a href={socialLinks.whatsapp} target="_blank" rel="noopener noreferrer" className="fs-icon fs-whatsapp" aria-label="WhatsApp">
             <i className="fab fa-whatsapp"></i>
             <span className="fs-tooltip">WhatsApp</span>
           </a>
-          <a href="tel:+573000000000" className="fs-icon fs-phone" aria-label="Teléfono">
+          <a href={`tel:${socialLinks.phone}`} className="fs-icon fs-phone" aria-label="Teléfono">
             <i className="fas fa-phone-alt"></i>
             <span className="fs-tooltip">Llamar</span>
           </a>
-          <a href="mailto:info@colsabi.edu.co" className="fs-icon fs-email" aria-label="Correo">
+          <a href={`mailto:${socialLinks.email}`} className="fs-icon fs-email" aria-label="Correo">
             <i className="fas fa-envelope"></i>
             <span className="fs-tooltip">Correo</span>
           </a>
