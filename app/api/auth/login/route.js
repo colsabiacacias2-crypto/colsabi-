@@ -14,10 +14,10 @@
 
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
-import { getPrisma } from '@/lib/prisma'
-import { comparePasswords } from '@/lib/security/password'
-import { signAccessToken } from '@/lib/security/jwt'
-import { setAuthCookie } from '@/lib/security/cookies'
+import { getPrisma } from '../../../../lib/prisma'
+import { verifyPassword as comparePasswords } from '../../../../lib/security/password'
+import { signAccessToken } from '../../../../lib/security/jwt'
+import { authCookieName, buildAuthCookieOptions } from '../../../../lib/security/cookies'
 
 // Esquema de validación para asegurar que los datos de entrada tengan el formato correcto
 const loginSchema = z.object({
@@ -87,6 +87,7 @@ export async function POST(request) {
     // Crear la respuesta y adjuntar la cookie HttpOnly
     const response = NextResponse.json({
       message: 'Login exitoso',
+      role: user.role,
       user: {
         id: user.id,
         email: user.email,
@@ -96,7 +97,10 @@ export async function POST(request) {
       }
     })
 
-    setAuthCookie(response, token)
+    response.cookies.set(authCookieName, token, {
+      ...buildAuthCookieOptions(),
+      maxAge: 60 * 60 * 8 // 8 horas de sesión
+    })
 
     return response
   } catch (error) {
