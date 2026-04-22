@@ -96,6 +96,15 @@ export async function middleware(request) {
     }
   }
 
+  // Redirigir a usuarios ya autenticados que intenten entrar a la página de login
+  if (pathname === '/ingreso' && session) {
+    if (session.role === 'ADMIN') {
+      return applySecurityHeaders(NextResponse.redirect(new URL('/admin', request.url)), origin)
+    } else if (session.role === 'ASOCIADO') {
+      return applySecurityHeaders(NextResponse.redirect(new URL('/asociado', request.url)), origin)
+    }
+  }
+
   if (matchesPrefix(pathname, adminPrefixes)) {
     if (!session || session.role !== 'ADMIN') {
       if (pathname.startsWith('/api/')) {
