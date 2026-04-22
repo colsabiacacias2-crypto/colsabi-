@@ -62,7 +62,7 @@ export async function POST(request) {
     })
 
     // Validación de existencia y comparación segura de contraseñas
-    if (!user || !(await comparePasswords(password, user.password_hash))) {
+    if (!user || !user.passwordHash || !(await comparePasswords(password, user.passwordHash))) {
       return NextResponse.json(
         { error: 'Credenciales inválidas' },
         { status: 401 }
@@ -70,7 +70,7 @@ export async function POST(request) {
     }
 
     // Verificar que la cuenta no haya sido deshabilitada por el administrador
-    if (!user.is_active) {
+    if (user.status !== 'ACTIVE') {
       return NextResponse.json(
         { error: 'Cuenta inactiva. Contacte al administrador.' },
         { status: 403 }
@@ -92,8 +92,7 @@ export async function POST(request) {
         id: user.id,
         email: user.email,
         role: user.role,
-        firstName: user.first_name,
-        lastName: user.last_name
+        fullName: user.fullName
       }
     })
 
