@@ -1,71 +1,110 @@
+/**
+ * @fileoverview API Route para el Inicio de Sesión (Login) y Emisión de JWT
+ * 
+ * Este archivo maneja el proceso crítico de autenticación de la plataforma. Recibe las credenciales
+ * del usuario (correo y contraseña), las valida contra la base de datos de Supabase, y si son correctas,
+ * genera un JSON Web Token (JWT) firmado. 
+ * 
+ * Además, implementa prácticas de seguridad clave:
+ * - Sanitización de entrada utilizando Zod.
+ * - Comparación de contraseñas usando Bcryptjs para evitar ataques de temporización.
+ * - Envío del JWT exclusivamente a través de Cookies HttpOnly, protegiendo al sistema contra
+ *   robos de sesión vía JavaScript (XSS).
+ */
+
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
-import { env } from '../../../../lib/env'
-import { corsPreflight, resolveCorsHeaders } from '../../../../lib/security/cors'
-import { assertJsonRequest, enforceRateLimit, getClientIp, sanitizePayload } from '../../../../lib/security/request'
-import { signAccessToken } from '../../../../lib/security/jwt'
-import { authCookieName, buildAuthCookieOptions } from '../../../../lib/security/cookies'
-import { hasDatabase, getPrisma } from '../../../../lib/prisma'
-import { verifyPassword } from '../../../../lib/security/password'
+import { getPrisma } from '@/lib/prisma'
+import { comparePasswords } from '@/lib/security/password'
+import { signAccessToken } from '@/lib/security/jwt'
+import { setAuthCookie } from '@/lib/security/cookies'
 
+// Esquema de validación para asegurar que los datos de entrada tengan el formato correcto
 const loginSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(8).max(128)
+  email: z.string().email('Formato de correo inválido'),
+  password: z.string().min(1, 'La contraseña es requerida')
 })
 
-export async function OPTIONS(request) {
-  return corsPreflight(request)
-}
-
+/**
+ * Maneja las peticiones POST enviadas al endpoint `/api/auth/login`.
+ * 
+ * Flujo de ejecución:
+ * 1. Parsea el cuerpo de la petición (body).
+ * 2. Valida la estructura del correo y contraseña usando Zod.
+ * 3. Consulta la base de datos (Prisma) para encontrar un usuario con ese correo.
+ * 4. Si existe, verifica que esté activo (is_active) y compara la contraseña encriptada (Bcrypt).
+ * 5. Si todo coincide, genera un token JWT ('signAccessToken').
+ * 6. Envía el token al navegador en una cookie segura ('setAuthCookie').
+ * 7. Responde con los datos básicos del usuario y su rol para que el frontend pueda redirigir.
+ * 
+ * @param {Request} request - La solicitud HTTP entrante con las credenciales del usuario.
+ * @returns {NextResponse} Respuesta JSON con estado de éxito/error y la cookie de sesión inyectada.
+ */
 export async function POST(request) {
-  const origin = request.headers.get('origin') || ''
-  const headers = resolveCorsHeaders(origin)
-
   try {
-    enforceRateLimit(`auth:login:${getClientIp(request)}`)
-    assertJsonRequest(request)
-
-    const input = sanitizePayload(await request.json())
-    const payload = loginSchema.parse(input)
-
-    if (!hasDatabase()) {
-      return NextResponse.json({ error: 'Database not configured' }, { status: 503, headers })
+    const body = await request.json()
+    
+    // Validación de la entrada (evita inyecciones extrañas)
+    const result = loginSchema.safeParse(body)
+    if (!result.success) {
+      return NextResponse.json(
+        { error: 'Datos inválidos', details: result.error.flatten() },
+        { status: 400 }
+      )
     }
 
+    const { email, password } = result.data
     const prisma = getPrisma()
-    const user = await prisma.user.findUnique({ where: { email: payload.email } })
 
-    if (!user || !user.passwordHash) {
-      return NextResponse.json({ error: 'Invalid credentials' }, { status: 401, headers })
-    }
-
-    const isValid = await verifyPassword(payload.password, user.passwordHash)
-
-    if (!isValid) {
-      return NextResponse.json({ error: 'Invalid credentials' }, { status: 401, headers })
-    }
-
-    if (user.status !== 'ACTIVE') {
-      return NextResponse.json({ error: 'User is not active' }, { status: 403, headers })
-    }
-
-    const token = await signAccessToken({ sub: user.id, role: user.role, email: user.email }, '8h')
-    const response = NextResponse.json({ ok: true, role: user.role }, { headers })
-
-    response.cookies.set(authCookieName, token, {
-      ...buildAuthCookieOptions(),
-      maxAge: 60 * 60 * 8
+    // Búsqueda del usuario en la base de datos
+    const user = await prisma.user.findUnique({
+      where: { email: email.toLowerCase() }
     })
+
+    // Validación de existencia y comparación segura de contraseñas
+    if (!user || !(await comparePasswords(password, user.password_hash))) {
+      return NextResponse.json(
+        { error: 'Credenciales inválidas' },
+        { status: 401 }
+      )
+    }
+
+    // Verificar que la cuenta no haya sido deshabilitada por el administrador
+    if (!user.is_active) {
+      return NextResponse.json(
+        { error: 'Cuenta inactiva. Contacte al administrador.' },
+        { status: 403 }
+      )
+    }
+
+    // Generar el token JWT con los datos vitales de la sesión
+    const token = await signAccessToken({
+      userId: user.id,
+      role: user.role,
+      email: user.email
+    })
+
+    // Crear la respuesta y adjuntar la cookie HttpOnly
+    const response = NextResponse.json({
+      message: 'Login exitoso',
+      user: {
+        id: user.id,
+        email: user.email,
+        role: user.role,
+        firstName: user.first_name,
+        lastName: user.last_name
+      }
+    })
+
+    setAuthCookie(response, token)
 
     return response
   } catch (error) {
-    const message = error instanceof Error ? error.message : 'Invalid request'
-
-    if (message === 'Too many requests') {
-      return NextResponse.json({ error: message }, { status: 429, headers })
-    }
-
-    return NextResponse.json({ error: 'Bad request' }, { status: 400, headers })
+    console.error('Error en login:', error)
+    return NextResponse.json(
+      { error: 'Error interno del servidor' },
+      { status: 500 }
+    )
   }
 }
 
