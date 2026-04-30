@@ -31,7 +31,7 @@ export default function DecisionButtons({ applicationId, organizationName }) {
       }
 
       if (decision === 'APPROVE') {
-        alert(`¡Aprobado con éxito!\n\nSe ha creado el usuario asociado para ${organizationName}.\nContraseña temporal: ${data.asociado.tempPassword}\n\nPor favor, guarda y comparte esta contraseña de forma segura con la organización.`)
+        alert(`¡Aprobado con éxito!\n\nSe ha creado el usuario asociado para ${organizationName}.\nUsuario: ${data.asociado.email}\nContraseña temporal: ${data.asociado.tempPassword}\n\nPor favor, guarda y comparte esta contraseña de forma segura con la organización.`)
       } else {
         alert(`La postulación de ${organizationName} ha sido rechazada.`)
       }
