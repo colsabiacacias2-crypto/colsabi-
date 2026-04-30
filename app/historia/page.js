@@ -19,7 +19,7 @@ export default function Historia() {
             </div>
           </div>
           <div className="media reveal-up delay-1" style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: 'var(--shadow-hover)' }}>
-            <img src="/img/aaa/fundadoras.png" alt="Fundadoras del colegio" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <img loading="lazy" src="/img/aaa/fundadoras.png" alt="Fundadoras del colegio" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
         </div>
       </section>
@@ -35,14 +35,14 @@ export default function Historia() {
           
           <div className="grid grid--2 reveal-up delay-1" style={{ gap: '3rem' }}>
             <article className="quick-card" style={{ padding: 0, overflow: 'hidden', flexDirection: 'column' }}>
-              <img src="/img/fundadores/luis montfort.jpeg" alt="San Luis María Grignion de Montfort" style={{ width: '100%', height: '350px', objectFit: 'cover', borderRadius: '0' }} />
+              <img loading="lazy" src="/img/fundadores/luis montfort.jpeg" alt="San Luis María Grignion de Montfort" style={{ width: '100%', height: '350px', objectFit: 'cover', borderRadius: '0' }} />
               <div style={{ padding: '2rem', textAlign: 'center', width: '100%' }}>
                 <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.4rem', color: 'var(--primary-600)' }}>San Luis María Grignion de Montfort</h3>
                 <p style={{ color: 'var(--muted)', margin: 0 }}>Sacerdote y misionero, inspirador de nuestra obra.</p>
               </div>
             </article>
             <article className="quick-card" style={{ padding: 0, overflow: 'hidden', flexDirection: 'column' }}>
-              <img src="/img/fundadores/María Luisa de Jesús Trichet.jpg" alt="Beata María Luisa de Jesús Trichet" style={{ width: '100%', height: '350px', objectFit: 'cover', borderRadius: '0' }} />
+              <img loading="lazy" src="/img/fundadores/María Luisa de Jesús Trichet.jpg" alt="Beata María Luisa de Jesús Trichet" style={{ width: '100%', height: '350px', objectFit: 'cover', borderRadius: '0' }} />
               <div style={{ padding: '2rem', textAlign: 'center', width: '100%' }}>
                 <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.4rem', color: 'var(--primary-600)' }}>Beata María Luisa de Jesús Trichet</h3>
                 <p style={{ color: 'var(--muted)', margin: 0 }}>Co-fundadora de la congregación de las Hijas de la Sabiduría.</p>
@@ -59,7 +59,7 @@ export default function Historia() {
           </div>
           
           <div className="media reveal-up delay-1" style={{ textAlign: 'center', margin: '1rem 0' }}>
-            <img src="/img/aaa/hijadelasabiduria.png" alt="Hijas de la Sabiduría" style={{ display: 'block', margin: '0 auto 2.5rem', maxWidth: '800px', width: '100%', borderRadius: '24px', boxShadow: 'var(--shadow-hover)' }} />
+            <img loading="lazy" src="/img/aaa/hijadelasabiduria.png" alt="Hijas de la Sabiduría" style={{ display: 'block', margin: '0 auto 2.5rem', maxWidth: '800px', width: '100%', borderRadius: '24px', boxShadow: 'var(--shadow-hover)' }} />
           </div>
           <p className="reveal-up delay-2" style={{ textAlign: 'center', fontSize: '1.15rem', color: 'var(--muted)', maxWidth: '800px', margin: '0 auto 3rem', lineHeight: '1.8' }}>
             La Congregación de las Hijas de la Sabiduría fue fundada por San Luis María Grignion de Montfort y la Beata María Luisa de Jesús Trichet el 25 de marzo de 1706 en Francia. Su misión es vivir y difundir la sabiduría divina a través de la educación, la atención a los enfermos y la promoción social, especialmente entre los más necesitados.
@@ -67,12 +67,12 @@ export default function Historia() {
           
           <div className="image-gallery reveal-up delay-3">
             <div className="top-row">
-              <img src="/img/aaa/1.jpg" alt="Obra 1" style={{ height: '300px' }} />
-              <img src="/img/aaa/4.jpg" alt="Obra 2" style={{ height: '300px' }} />
-              <img src="/img/aaa/3.jpg" alt="Obra 3" style={{ height: '300px' }} />
+              <img loading="lazy" src="/img/aaa/1.jpg" alt="Obra 1" style={{ height: '300px' }} />
+              <img loading="lazy" src="/img/aaa/4.jpg" alt="Obra 2" style={{ height: '300px' }} />
+              <img loading="lazy" src="/img/aaa/3.jpg" alt="Obra 3" style={{ height: '300px' }} />
             </div>
             <div className="bottom-row" style={{ marginTop: '1rem' }}>
-              <img src="/img/aaa/2.jpg" alt="Obra 4" style={{ height: '400px', maxWidth: '800px' }} />
+              <img loading="lazy" src="/img/aaa/2.jpg" alt="Obra 4" style={{ height: '400px', maxWidth: '800px' }} />
             </div>
           </div>
           
@@ -94,67 +94,67 @@ export default function Historia() {
           
           <div className="identidades-grid reveal-up delay-1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem' }}>
             <a href="https://www.fdlsagesse.org/en/about-the-daughters-of-wisdom/nos-entites/maison-general/" target="_blank" rel="noopener noreferrer" className="quick-card" style={{ padding: '1.5rem', alignItems: 'center', textAlign: 'center' }}>
-              <img src="/img/aaa/casa%20general%20.png" alt="Casa General" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
+              <img loading="lazy" src="/img/aaa/casa%20general%20.png" alt="Casa General" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
               <strong>Casa General</strong>
             </a>
             <a href="http://fdlsagesse.org/en/about-the-daughters-of-wisdom/nos-entites/belgique/" target="_blank" rel="noopener noreferrer" className="quick-card" style={{ padding: '1.5rem', alignItems: 'center', textAlign: 'center' }}>
-              <img src="/img/aaa/belgica.png" alt="Bélgica" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
+              <img loading="lazy" src="/img/aaa/belgica.png" alt="Bélgica" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
               <strong>Delegación de Bélgica</strong>
             </a>
             <a href="https://www.fdlsagesse.org/en/about-the-daughters-of-wisdom/nos-entites/canada/" target="_blank" rel="noopener noreferrer" className="quick-card" style={{ padding: '1.5rem', alignItems: 'center', textAlign: 'center' }}>
-              <img src="/img/aaa/canada.png" alt="Canadá" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
+              <img loading="lazy" src="/img/aaa/canada.png" alt="Canadá" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
               <strong>Canadá</strong>
             </a>
             <a href="https://www.fdlsagesse.org/en/about-the-daughters-of-wisdom/nos-entites/colombie/" target="_blank" rel="noopener noreferrer" className="quick-card" style={{ padding: '1.5rem', alignItems: 'center', textAlign: 'center' }}>
-              <img src="/img/aaa/colombia.png" alt="Colombia" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
+              <img loading="lazy" src="/img/aaa/colombia.png" alt="Colombia" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
               <strong>Colombia</strong>
             </a>
             <a href="https://www.fdlsagesse.org/en/about-the-daughters-of-wisdom/nos-entites/etats-unis/" target="_blank" rel="noopener noreferrer" className="quick-card" style={{ padding: '1.5rem', alignItems: 'center', textAlign: 'center' }}>
-              <img src="/img/aaa/eeuu.png" alt="Estados Unidos" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
+              <img loading="lazy" src="/img/aaa/eeuu.png" alt="Estados Unidos" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
               <strong>Estados Unidos</strong>
             </a>
             <a href="https://www.fdlsagesse.org/en/about-the-daughters-of-wisdom/nos-entites/france/" target="_blank" rel="noopener noreferrer" className="quick-card" style={{ padding: '1.5rem', alignItems: 'center', textAlign: 'center' }}>
-              <img src="/img/aaa/francia.png" alt="Francia" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
+              <img loading="lazy" src="/img/aaa/francia.png" alt="Francia" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
               <strong>Francia</strong>
             </a>
             <a href="https://www.fdlsagesse.org/en/about-the-daughters-of-wisdom/nos-entites/g-b-i-grande-bretagne-irlande/" target="_blank" rel="noopener noreferrer" className="quick-card" style={{ padding: '1.5rem', alignItems: 'center', textAlign: 'center' }}>
-              <img src="/img/aaa/irlanda.png" alt="Irlanda" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
+              <img loading="lazy" src="/img/aaa/irlanda.png" alt="Irlanda" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
               <strong>Delegación GBI</strong>
             </a>
             <a href="https://www.fdlsagesse.org/en/about-the-daughters-of-wisdom/nos-entites/haiti/" target="_blank" rel="noopener noreferrer" className="quick-card" style={{ padding: '1.5rem', alignItems: 'center', textAlign: 'center' }}>
-              <img src="/img/aaa/haiti.png" alt="Haití" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
+              <img loading="lazy" src="/img/aaa/haiti.png" alt="Haití" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
               <strong>Haití</strong>
             </a>
             <a href="https://www.fdlsagesse.org/en/about-the-daughters-of-wisdom/nos-entites/hollande/" target="_blank" rel="noopener noreferrer" className="quick-card" style={{ padding: '1.5rem', alignItems: 'center', textAlign: 'center' }}>
-              <img src="/img/aaa/holanda.png" alt="Holanda" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
+              <img loading="lazy" src="/img/aaa/holanda.png" alt="Holanda" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
               <strong>Delegación Holanda</strong>
             </a>
             <a href="https://www.fdlsagesse.org/en/about-the-daughters-of-wisdom/nos-entites/inde/" target="_blank" rel="noopener noreferrer" className="quick-card" style={{ padding: '1.5rem', alignItems: 'center', textAlign: 'center' }}>
-              <img src="/img/aaa/india.png" alt="India" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
+              <img loading="lazy" src="/img/aaa/india.png" alt="India" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
               <strong>India</strong>
             </a>
             <a href="https://www.fdlsagesse.org/en/about-the-daughters-of-wisdom/nos-entites/italie/" target="_blank" rel="noopener noreferrer" className="quick-card" style={{ padding: '1.5rem', alignItems: 'center', textAlign: 'center' }}>
-              <img src="/img/aaa/italia.png" alt="Italia" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
+              <img loading="lazy" src="/img/aaa/italia.png" alt="Italia" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
               <strong>Italia</strong>
             </a>
             <a href="https://www.fdlsagesse.org/en/about-the-daughters-of-wisdom/nos-entites/madagascar/" target="_blank" rel="noopener noreferrer" className="quick-card" style={{ padding: '1.5rem', alignItems: 'center', textAlign: 'center' }}>
-              <img src="/img/aaa/madagascar.png" alt="Madagascar" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
+              <img loading="lazy" src="/img/aaa/madagascar.png" alt="Madagascar" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
               <strong>Madagascar</strong>
             </a>
             <a href="https://www.fdlsagesse.org/en/about-the-daughters-of-wisdom/nos-entites/malawi/" target="_blank" rel="noopener noreferrer" className="quick-card" style={{ padding: '1.5rem', alignItems: 'center', textAlign: 'center' }}>
-              <img src="/img/aaa/malawi.png" alt="Malawi" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
+              <img loading="lazy" src="/img/aaa/malawi.png" alt="Malawi" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
               <strong>Delegación de Malawi</strong>
             </a>
             <a href="https://www.fdlsagesse.org/en/about-the-daughters-of-wisdom/nos-entites/maria-luisa/" target="_blank" rel="noopener noreferrer" className="quick-card" style={{ padding: '1.5rem', alignItems: 'center', textAlign: 'center' }}>
-              <img src="/img/aaa/maria%20lucia%20.png" alt="Maria Lucia" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
+              <img loading="lazy" src="/img/aaa/maria%20lucia%20.png" alt="Maria Lucia" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
               <strong>Delegación María Lucia</strong>
             </a>
             <a href="https://www.fdlsagesse.org/en/about-the-daughters-of-wisdom/nos-entites/delegations-de-png-des-philippines-et-du-secteur-indonesie/" target="_blank" rel="noopener noreferrer" className="quick-card" style={{ padding: '1.5rem', alignItems: 'center', textAlign: 'center' }}>
-              <img src="/img/aaa/asia%20oceania%20.png" alt="Asia Oceanía" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
+              <img loading="lazy" src="/img/aaa/asia%20oceania%20.png" alt="Asia Oceanía" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
               <strong>Delegación Asia Oceanía</strong>
             </a>
             <a href="https://www.fdlsagesse.org/en/about-the-daughters-of-wisdom/nos-entites/rdc-r-c-du-congo/" target="_blank" rel="noopener noreferrer" className="quick-card" style={{ padding: '1.5rem', alignItems: 'center', textAlign: 'center' }}>
-              <img src="/img/aaa/rd.png" alt="RD del Congo" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
+              <img loading="lazy" src="/img/aaa/rd.png" alt="RD del Congo" style={{ height: '100px', objectFit: 'contain', marginBottom: '1rem' }} />
               <strong>Delegación RDC</strong>
             </a>
           </div>

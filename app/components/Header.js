@@ -5,7 +5,7 @@ export default function Header() {
     <header className="header" id="header">
       <div className="container header__wrap">
         <Link href="/" className="brand">
-          <img src="/img/aaa/logo.png" alt="Logo colegio" className="brand__logo" />
+          <img loading="lazy" src="/img/aaa/logo.png" alt="Logo colegio" className="brand__logo" />
           <div className="brand__text">
             <span className="brand__name">Colegio Nuestra Señora La Sabiduría</span>
             <span className="brand__motto">Formando valores para la vida</span>

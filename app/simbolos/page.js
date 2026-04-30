@@ -19,7 +19,7 @@ export default function Simbolos() {
             </div>
           </div>
           <div className="media reveal-up delay-1" style={{ textAlign: 'center', background: 'var(--surface-blue)', padding: '3rem', borderRadius: '32px' }}>
-            <img src="/img/aaa/logo.png" alt="Escudo del colegio" style={{ maxWidth: '300px', margin: '0 auto', display: 'block', filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.15))' }} />
+            <img loading="lazy" src="/img/aaa/logo.png" alt="Escudo del colegio" style={{ maxWidth: '300px', margin: '0 auto', display: 'block', filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.15))' }} />
           </div>
         </div>
       </section>
@@ -27,7 +27,7 @@ export default function Simbolos() {
       <section className="section section--alt" id="bandera">
         <div className="container grid grid--2" style={{ alignItems: 'center', gap: '4rem' }}>
           <div className="media reveal-up" style={{ textAlign: 'center', background: 'var(--card)', padding: '3rem', borderRadius: '32px', boxShadow: 'var(--shadow)' }}>
-            <img src="/img/aaa/escudo.jpg" alt="Bandera del colegio" style={{ maxWidth: '100%', borderRadius: '16px', display: 'block', margin: '0 auto' }} />
+            <img loading="lazy" src="/img/aaa/escudo.jpg" alt="Bandera del colegio" style={{ maxWidth: '100%', borderRadius: '16px', display: 'block', margin: '0 auto' }} />
           </div>
           <div className="reveal-up delay-1">
             <h2 className="section__title">Nuestra <span>Bandera</span></h2>

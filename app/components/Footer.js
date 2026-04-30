@@ -33,10 +33,10 @@ export default function Footer() {
           <div className="footer-content">
             <div className="footer-logos">
               <a href="https://www.mineducacion.gov.co" target="_blank" rel="noopener noreferrer">
-                <img src="/img/aaa/educacion.png" alt="Logo Mineducación" />
+                <img loading="lazy" src="/img/aaa/educacion.png" alt="Logo Mineducación" />
               </a>
               <a href="https://meta.gov.co/secretaria/secretaria-educacionl/6" target="_blank" rel="noopener noreferrer">
-                <img src="/img/aaa/oportunidades.png" alt="Logo Secretaría de Educación del Meta" />
+                <img loading="lazy" src="/img/aaa/oportunidades.png" alt="Logo Secretaría de Educación del Meta" />
               </a>
             </div>
             <p className="footer-text">

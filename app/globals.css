@@ -16,11 +16,13 @@
   --surface-green:#dcfce7;
   --surface-yellow:#fef3c7;
   --transition-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+  --font-main: var(--font-poppins), 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-heading: var(--font-montserrat), 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;scroll-behavior:smooth}
 body{
-  font-family: 'Poppins', 'Montserrat', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-main);
   color:var(--text);
   background:var(--bg);
   line-height:1.6;

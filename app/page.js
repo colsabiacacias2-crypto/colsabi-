@@ -11,10 +11,10 @@ export default function Home() {
         <div className="container hero-grid">
           {/* Lado Izquierdo: Slider de Imágenes Transicionadas */}
           <div className="hero-slider reveal-up">
-            <img src="/img/aaa/sabiduria3.jpg" alt="Estudiantes" />
-            <img src="/img/instalaciones/20240401073902_IMG_9008.JPG" alt="Evento" />
-            <img src="/img/instalaciones/_DSC0661.jpg" alt="Educación" />
-            <img src="/img/instalaciones/_DSC0676.jpg" alt="Instalaciones" />
+            <img loading="lazy" src="/img/aaa/sabiduria3.jpg" alt="Estudiantes" />
+            <img loading="lazy" src="/img/instalaciones/20240401073902_IMG_9008.JPG" alt="Evento" />
+            <img loading="lazy" src="/img/instalaciones/_DSC0661.jpg" alt="Educación" />
+            <img loading="lazy" src="/img/instalaciones/_DSC0676.jpg" alt="Instalaciones" />
           </div>
 
           {/* Lado Derecho: Contenido */}
@@ -102,22 +102,22 @@ export default function Home() {
           
           <div className="team-grid reveal-up delay-2">
             <article className="team-card">
-              <img src="/img/p/RepresentanteLegal.png" alt="Representante Legal" />
+              <img loading="lazy" src="/img/p/RepresentanteLegal.png" alt="Representante Legal" />
               <h4>Hna. Gisela Huertas Torres</h4>
               <p className="small">Representante Legal</p>
             </article>
             <article className="team-card">
-              <img src="/img/p/EDISON ESTEBAN DEJOY MONTILLA .jpg" alt="Rector" />
+              <img loading="lazy" src="/img/p/EDISON ESTEBAN DEJOY MONTILLA .jpg" alt="Rector" />
               <h4>Edison Esteban Dejoy Montilla</h4>
               <p className="small">Rector</p>
             </article>
             <article className="team-card">
-              <img src="/img/p/EDY YESID CORREA LEGUIZAMÓN .jpg" alt="Coordinador Académico" />
+              <img loading="lazy" src="/img/p/EDY YESID CORREA LEGUIZAMÓN .jpg" alt="Coordinador Académico" />
               <h4>Edy Yesid Correa Leguizamón</h4>
               <p className="small">Coordinador Académico</p>
             </article>
             <article className="team-card">
-              <img src="/img/p/NUBIA ALEJANDRA REYES HUERTAS  .jpg" alt="Psicoorientadora" />
+              <img loading="lazy" src="/img/p/NUBIA ALEJANDRA REYES HUERTAS  .jpg" alt="Psicoorientadora" />
               <h4>Nubia Alejandra Reyes Huertas</h4>
               <p className="small">Psicoorientadora</p>
             </article>
@@ -132,21 +132,21 @@ export default function Home() {
           
           <div className="instalaciones-grid reveal-up delay-2">
             <div className="instalacion-card" style={{ padding: 0, overflow: 'hidden', borderRadius: '24px' }}>
-              <img src="/img/instalaciones/20240401073902_IMG_9008.JPG" alt="Sede Acacias" style={{ height: '250px', width: '100%', objectFit: 'cover' }} />
+              <img loading="lazy" src="/img/instalaciones/20240401073902_IMG_9008.JPG" alt="Sede Acacias" style={{ height: '250px', width: '100%', objectFit: 'cover' }} />
               <div style={{ padding: '1.5rem' }}>
                 <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.2rem' }}>Sede Acacías</h3>
                 <p style={{ margin: 0, color: 'var(--muted)' }}>Nuestra Señora de la Sabiduría</p>
               </div>
             </div>
             <div className="instalacion-card" style={{ padding: 0, overflow: 'hidden', borderRadius: '24px' }}>
-              <img src="/img/instalaciones/_DSC0661.jpg" alt="Espacios" style={{ height: '250px', width: '100%', objectFit: 'cover' }} />
+              <img loading="lazy" src="/img/instalaciones/_DSC0661.jpg" alt="Espacios" style={{ height: '250px', width: '100%', objectFit: 'cover' }} />
               <div style={{ padding: '1.5rem' }}>
                 <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.2rem' }}>Espacios y aulas</h3>
                 <p style={{ margin: 0, color: 'var(--muted)' }}>Entornos modernos y seguros</p>
               </div>
             </div>
             <div className="instalacion-card" style={{ padding: 0, overflow: 'hidden', borderRadius: '24px' }}>
-              <img src="/img/instalaciones/_DSC0676.jpg" alt="Recreación" style={{ height: '250px', width: '100%', objectFit: 'cover' }} />
+              <img loading="lazy" src="/img/instalaciones/_DSC0676.jpg" alt="Recreación" style={{ height: '250px', width: '100%', objectFit: 'cover' }} />
               <div style={{ padding: '1.5rem' }}>
                 <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.2rem' }}>Zonas verdes</h3>
                 <p style={{ margin: 0, color: 'var(--muted)' }}>Contacto con la naturaleza</p>

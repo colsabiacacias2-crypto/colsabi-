@@ -13,7 +13,7 @@ export default function AsociadoPage() {
       <section className="workspace-shell">
         <aside className="workspace-sidebar">
           <div className="workspace-brand">
-            <img src="/img/aaa/logo.png" alt="Logo COLSABI" />
+            <img loading="lazy" src="/img/aaa/logo.png" alt="Logo COLSABI" />
             <div>
               <strong>Portal Asociado</strong>
               <span>Escenario de práctica</span>

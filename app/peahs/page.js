@@ -18,7 +18,7 @@ export default function Peahs() {
             </div>
           </div>
           <div className="media reveal-up delay-1" style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: 'var(--shadow-hover)' }}>
-            <img src="/img/aaa/Captura%20de%20pantalla%202025-10-01%20152341.png" alt="Pastoral Educativa" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <img loading="lazy" src="/img/aaa/Captura%20de%20pantalla%202025-10-01%20152341.png" alt="Pastoral Educativa" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
         </div>
       </section>
@@ -46,13 +46,13 @@ export default function Peahs() {
             <div className="pastoral-card" style={{ background: 'var(--surface-blue)', padding: '2rem', borderRadius: '32px', boxShadow: 'var(--shadow)' }}>
               <div className="mini-carousel" style={{ borderRadius: '24px', overflow: 'hidden' }}>
                 <div className="carousel-track">
-                  <div className="carousel-slide"><img src="/img/pastoral/Imagen%20de%20WhatsApp%202025-10-15%20a%20las%2006.45.44_8ea3b7f4.jpg" alt="Actividad de pastoral 1" style={{ width: '100%', height: '400px', objectFit: 'cover' }} /></div>
-                  <div className="carousel-slide"><img src="/img/pastoral/IMG-20251015-WA0004.jpg" alt="Actividad de pastoral 2" style={{ width: '100%', height: '400px', objectFit: 'cover' }} /></div>
-                  <div className="carousel-slide"><img src="/img/pastoral/IMG-20251015-WA0005.jpg" alt="Actividad de pastoral 3" style={{ width: '100%', height: '400px', objectFit: 'cover' }} /></div>
-                  <div className="carousel-slide"><img src="/img/pastoral/IMG-20251015-WA0007.jpg" alt="Actividad de pastoral 4" style={{ width: '100%', height: '400px', objectFit: 'cover' }} /></div>
-                  <div className="carousel-slide"><img src="/img/pastoral/IMG-20251015-WA0008.jpg" alt="Actividad de pastoral 5" style={{ width: '100%', height: '400px', objectFit: 'cover' }} /></div>
-                  <div className="carousel-slide"><img src="/img/pastoral/IMG-20251015-WA0009.jpg" alt="Actividad de pastoral 6" style={{ width: '100%', height: '400px', objectFit: 'cover' }} /></div>
-                  <div className="carousel-slide"><img src="/img/pastoral/IMG-20251015-WA0010.jpg" alt="Actividad de pastoral 7" style={{ width: '100%', height: '400px', objectFit: 'cover' }} /></div>
+                  <div className="carousel-slide"><img loading="lazy" src="/img/pastoral/Imagen%20de%20WhatsApp%202025-10-15%20a%20las%2006.45.44_8ea3b7f4.jpg" alt="Actividad de pastoral 1" style={{ width: '100%', height: '400px', objectFit: 'cover' }} /></div>
+                  <div className="carousel-slide"><img loading="lazy" src="/img/pastoral/IMG-20251015-WA0004.jpg" alt="Actividad de pastoral 2" style={{ width: '100%', height: '400px', objectFit: 'cover' }} /></div>
+                  <div className="carousel-slide"><img loading="lazy" src="/img/pastoral/IMG-20251015-WA0005.jpg" alt="Actividad de pastoral 3" style={{ width: '100%', height: '400px', objectFit: 'cover' }} /></div>
+                  <div className="carousel-slide"><img loading="lazy" src="/img/pastoral/IMG-20251015-WA0007.jpg" alt="Actividad de pastoral 4" style={{ width: '100%', height: '400px', objectFit: 'cover' }} /></div>
+                  <div className="carousel-slide"><img loading="lazy" src="/img/pastoral/IMG-20251015-WA0008.jpg" alt="Actividad de pastoral 5" style={{ width: '100%', height: '400px', objectFit: 'cover' }} /></div>
+                  <div className="carousel-slide"><img loading="lazy" src="/img/pastoral/IMG-20251015-WA0009.jpg" alt="Actividad de pastoral 6" style={{ width: '100%', height: '400px', objectFit: 'cover' }} /></div>
+                  <div className="carousel-slide"><img loading="lazy" src="/img/pastoral/IMG-20251015-WA0010.jpg" alt="Actividad de pastoral 7" style={{ width: '100%', height: '400px', objectFit: 'cover' }} /></div>
                 </div>
                 <button className="control prev">&#10094;</button>
                 <button className="control next">&#10095;</button>
@@ -75,7 +75,7 @@ export default function Peahs() {
           <div className="proyectos-lista" style={{ display: 'grid', gap: '3rem' }}>
             <div className="proyecto-item reveal-up" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'center', background: 'var(--card)', padding: '2rem', borderRadius: '32px', boxShadow: 'var(--shadow)' }}>
               <div className="proyecto-img" style={{ textAlign: 'center' }}>
-                <img src="/img/proyectos/pastoral.png" alt="Pastoral Educativa" style={{ maxHeight: '200px', objectFit: 'contain', margin: '0 auto' }} />
+                <img loading="lazy" src="/img/proyectos/pastoral.png" alt="Pastoral Educativa" style={{ maxHeight: '200px', objectFit: 'contain', margin: '0 auto' }} />
               </div>
               <div className="proyecto-texto">
                 <h3 style={{ color: 'var(--primary-600)', fontSize: '1.4rem', marginBottom: '0.5rem' }}>PASTORAL EDUCATIVA ACADÉMICA HUMANIZANTE</h3>
@@ -86,7 +86,7 @@ export default function Peahs() {
             
             <div className="proyecto-item reveal-up delay-1" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'center', background: 'var(--card)', padding: '2rem', borderRadius: '32px', boxShadow: 'var(--shadow)', direction: 'rtl' }}>
               <div className="proyecto-img" style={{ textAlign: 'center', direction: 'ltr' }}>
-                <img src="/img/proyectos/paz.png" alt="Democracia y Paz" style={{ maxHeight: '200px', objectFit: 'contain', margin: '0 auto' }} />
+                <img loading="lazy" src="/img/proyectos/paz.png" alt="Democracia y Paz" style={{ maxHeight: '200px', objectFit: 'contain', margin: '0 auto' }} />
               </div>
               <div className="proyecto-texto" style={{ direction: 'ltr' }}>
                 <h3 style={{ color: 'var(--primary-600)', fontSize: '1.4rem', marginBottom: '0.5rem' }}>DEMOCRACIA Y PAZ</h3>
@@ -96,7 +96,7 @@ export default function Peahs() {
             
             <div className="proyecto-item reveal-up" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'center', background: 'var(--card)', padding: '2rem', borderRadius: '32px', boxShadow: 'var(--shadow)' }}>
               <div className="proyecto-img" style={{ textAlign: 'center' }}>
-                <img src="/img/proyectos/PLAN.png" alt="Plan Lector" style={{ maxHeight: '200px', objectFit: 'contain', margin: '0 auto' }} />
+                <img loading="lazy" src="/img/proyectos/PLAN.png" alt="Plan Lector" style={{ maxHeight: '200px', objectFit: 'contain', margin: '0 auto' }} />
               </div>
               <div className="proyecto-texto">
                 <h3 style={{ color: 'var(--primary-600)', fontSize: '1.4rem', marginBottom: '0.5rem' }}>PLAN LECTOR</h3>
@@ -106,7 +106,7 @@ export default function Peahs() {
             
             <div className="proyecto-item reveal-up delay-1" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'center', background: 'var(--card)', padding: '2rem', borderRadius: '32px', boxShadow: 'var(--shadow)', direction: 'rtl' }}>
               <div className="proyecto-img" style={{ textAlign: 'center', direction: 'ltr' }}>
-                <img src="/img/proyectos/AMBIENTE.png" alt="Medio Ambiente" style={{ maxHeight: '200px', objectFit: 'contain', margin: '0 auto' }} />
+                <img loading="lazy" src="/img/proyectos/AMBIENTE.png" alt="Medio Ambiente" style={{ maxHeight: '200px', objectFit: 'contain', margin: '0 auto' }} />
               </div>
               <div className="proyecto-texto" style={{ direction: 'ltr' }}>
                 <h3 style={{ color: 'var(--primary-600)', fontSize: '1.4rem', marginBottom: '0.5rem' }}>MEDIO AMBIENTE</h3>
@@ -116,7 +116,7 @@ export default function Peahs() {
             
             <div className="proyecto-item reveal-up" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'center', background: 'var(--card)', padding: '2rem', borderRadius: '32px', boxShadow: 'var(--shadow)' }}>
               <div className="proyecto-img" style={{ textAlign: 'center' }}>
-                <img src="/img/proyectos/socio.png" alt="Educación Socioemocional" style={{ maxHeight: '200px', objectFit: 'contain', margin: '0 auto' }} />
+                <img loading="lazy" src="/img/proyectos/socio.png" alt="Educación Socioemocional" style={{ maxHeight: '200px', objectFit: 'contain', margin: '0 auto' }} />
               </div>
               <div className="proyecto-texto">
                 <h3 style={{ color: 'var(--primary-600)', fontSize: '1.4rem', marginBottom: '0.5rem' }}>EDUCACIÓN SOCIOEMOCIONAL</h3>
@@ -126,7 +126,7 @@ export default function Peahs() {
             
             <div className="proyecto-item reveal-up delay-1" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'center', background: 'var(--card)', padding: '2rem', borderRadius: '32px', boxShadow: 'var(--shadow)', direction: 'rtl' }}>
               <div className="proyecto-img" style={{ textAlign: 'center', direction: 'ltr' }}>
-                <img src="/img/proyectos/SEXUALIDAD.png" alt="Sexualidad" style={{ maxHeight: '200px', objectFit: 'contain', margin: '0 auto' }} />
+                <img loading="lazy" src="/img/proyectos/SEXUALIDAD.png" alt="Sexualidad" style={{ maxHeight: '200px', objectFit: 'contain', margin: '0 auto' }} />
               </div>
               <div className="proyecto-texto" style={{ direction: 'ltr' }}>
                 <h3 style={{ color: 'var(--primary-600)', fontSize: '1.4rem', marginBottom: '0.5rem' }}>SEXUALIDAD</h3>
@@ -136,7 +136,7 @@ export default function Peahs() {
             
             <div className="proyecto-item reveal-up" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'center', background: 'var(--card)', padding: '2rem', borderRadius: '32px', boxShadow: 'var(--shadow)' }}>
               <div className="proyecto-img" style={{ textAlign: 'center' }}>
-                <img src="/img/proyectos/PREVENCION.png" alt="Prevención de Desastres" style={{ maxHeight: '200px', objectFit: 'contain', margin: '0 auto' }} />
+                <img loading="lazy" src="/img/proyectos/PREVENCION.png" alt="Prevención de Desastres" style={{ maxHeight: '200px', objectFit: 'contain', margin: '0 auto' }} />
               </div>
               <div className="proyecto-texto">
                 <h3 style={{ color: 'var(--primary-600)', fontSize: '1.4rem', marginBottom: '0.5rem' }}>PREVENCIÓN DE DESASTRES</h3>
@@ -175,7 +175,7 @@ export default function Peahs() {
             </div>
             
             <div className="valores-img reveal-up" style={{ textAlign: 'center', padding: '2rem', background: 'var(--surface-green)', borderRadius: '50%', boxShadow: 'var(--shadow-hover)' }}>
-              <img src="/img/aaa/valores.png" alt="Valores" style={{ width: '250px', height: '250px', objectFit: 'contain' }} />
+              <img loading="lazy" src="/img/aaa/valores.png" alt="Valores" style={{ width: '250px', height: '250px', objectFit: 'contain' }} />
             </div>
             
             <div className="col" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>

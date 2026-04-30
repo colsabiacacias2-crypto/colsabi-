@@ -22,7 +22,7 @@ export default function AdminPage() {
       <section className="workspace-shell">
         <aside className="workspace-sidebar" style={{ display: 'flex', flexDirection: 'column' }}>
           <div className="workspace-brand">
-            <img src="/img/aaa/logo.png" alt="Logo COLSABI" />
+            <img loading="lazy" src="/img/aaa/logo.png" alt="Logo COLSABI" />
             <div>
               <strong>COLSABI Admin</strong>
               <span>Horas sociales</span>
