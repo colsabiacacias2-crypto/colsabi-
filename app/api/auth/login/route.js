@@ -105,7 +105,10 @@ export async function POST(request) {
   } catch (error) {
     console.error('Error en login:', error)
     return NextResponse.json(
-      { error: 'Error interno del servidor' },
+      { 
+        error: 'Error interno del servidor', 
+        details: error.message || 'Error desconocido' 
+      },
       { status: 500 }
     )
   }

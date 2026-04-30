@@ -26,7 +26,7 @@ export default function IngresoPage() {
       const data = await res.json()
 
       if (!res.ok) {
-        throw new Error(data.error || 'Credenciales inválidas')
+        throw new Error(data.details ? `${data.error}: ${data.details}` : (data.error || 'Credenciales inválidas'))
       }
 
       // Redirigir según el rol que devolvió el backend
