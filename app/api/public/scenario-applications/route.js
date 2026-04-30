@@ -1,62 +1,60 @@
 import { NextResponse } from 'next/server'
+import { getPrisma } from '../../../../lib/prisma'
 import { z } from 'zod'
-import { corsPreflight, resolveCorsHeaders } from '../../../../lib/security/cors'
-import { assertJsonRequest, enforceRateLimit, getClientIp, sanitizePayload } from '../../../../lib/security/request'
-import { hasDatabase, getPrisma } from '../../../../lib/prisma'
 
+// Esquema de validación para los datos entrantes
 const applicationSchema = z.object({
-  organizationName: z.string().min(2).max(160),
-  contactName: z.string().min(2).max(160),
-  contactEmail: z.string().email().max(180),
-  contactPhone: z.string().min(7).max(40),
-  city: z.string().min(2).max(80),
-  address: z.string().min(2).max(180).optional().or(z.literal('')),
-  capacity: z.coerce.number().int().positive().max(500).optional(),
-  description: z.string().min(30).max(2000)
+  organizationName: z.string().min(3, "El nombre de la institución es muy corto"),
+  contactName: z.string().min(3, "El nombre del responsable es muy corto"),
+  contactEmail: z.string().email("Correo electrónico inválido"),
+  contactPhone: z.string().min(7, "El teléfono no es válido"),
+  city: z.string().min(3, "La ciudad es muy corta"),
+  capacity: z.coerce.number().int().min(1, "Debe haber al menos 1 cupo").optional().default(10),
+  description: z.string().min(20, "La descripción debe ser más detallada")
 })
 
-export async function OPTIONS(request) {
-  return corsPreflight(request)
-}
-
-export async function POST(request) {
-  const origin = request.headers.get('origin') || ''
-  const headers = resolveCorsHeaders(origin)
-
+export async function POST(req) {
   try {
-    enforceRateLimit(`public:scenario-application:${getClientIp(request)}`)
-    assertJsonRequest(request)
-
-    const input = sanitizePayload(await request.json())
-    const payload = applicationSchema.parse(input)
-
-    if (!hasDatabase()) {
-      return NextResponse.json({ error: 'Database not configured' }, { status: 503, headers })
+    const body = await req.json()
+    
+    // 1. Validar los datos con Zod
+    const result = applicationSchema.safeParse(body)
+    if (!result.success) {
+      return NextResponse.json(
+        { error: 'Datos inválidos', details: result.error.flatten().fieldErrors },
+        { status: 400 }
+      )
     }
 
+    const data = result.data
+
+    // 2. Conectar a la base de datos y guardar la postulación
     const prisma = getPrisma()
-    const created = await prisma.scenarioApplication.create({
+    
+    const newApplication = await prisma.scenarioApplication.create({
       data: {
-        organizationName: payload.organizationName,
-        contactName: payload.contactName,
-        contactEmail: payload.contactEmail,
-        contactPhone: payload.contactPhone,
-        city: payload.city,
-        address: payload.address || null,
-        capacity: payload.capacity ?? null,
-        description: payload.description
+        organizationName: data.organizationName,
+        contactName: data.contactName,
+        contactEmail: data.contactEmail,
+        contactPhone: data.contactPhone,
+        city: data.city,
+        capacity: data.capacity,
+        description: data.description,
+        status: 'PENDING'
       }
     })
 
-    return NextResponse.json({ ok: true, id: created.id }, { headers })
+    // 3. Devolver respuesta exitosa
+    return NextResponse.json(
+      { message: 'Postulación enviada con éxito', id: newApplication.id },
+      { status: 201 }
+    )
+
   } catch (error) {
-    const message = error instanceof Error ? error.message : 'Invalid request'
-
-    if (message === 'Too many requests') {
-      return NextResponse.json({ error: message }, { status: 429, headers })
-    }
-
-    return NextResponse.json({ error: 'Bad request' }, { status: 400, headers })
+    console.error('Error al guardar la postulación:', error)
+    return NextResponse.json(
+      { error: 'Error interno del servidor al procesar la solicitud' },
+      { status: 500 }
+    )
   }
 }
-

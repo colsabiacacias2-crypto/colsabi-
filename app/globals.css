@@ -19,6 +19,13 @@
   --font-main: var(--font-poppins), 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   --font-heading: var(--font-montserrat), 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+/* Page transitions */
+.page-transition {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;scroll-behavior:smooth}
 body{
