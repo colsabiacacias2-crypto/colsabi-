@@ -27,7 +27,8 @@ export default function DecisionButtons({ applicationId, organizationName }) {
       const data = await res.json()
 
       if (!res.ok) {
-        throw new Error(data.error || 'Error al procesar la decisión')
+        console.error("Detalles del error:", data)
+        throw new Error(data.details || data.error || 'Error al procesar la decisión')
       }
 
       if (decision === 'APPROVE') {

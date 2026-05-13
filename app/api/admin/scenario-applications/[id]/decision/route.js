@@ -74,7 +74,8 @@ export async function POST(request, { params }) {
     enforceRateLimit(`admin:decision:${getClientIp(request)}`)
     assertJsonRequest(request)
 
-    const input = sanitizePayload(await request.json())
+    const rawInput = await request.json()
+    const input = sanitizePayload(rawInput)
     const payload = bodySchema.parse(input)
 
     if (!hasDatabase()) {
@@ -110,7 +111,8 @@ export async function POST(request, { params }) {
     const scenarioName = application.organizationName
     const scenarioSlug = slugify(`${scenarioName}-${application.city}`)
 
-    const result = await prisma.$transaction(async (tx) => {
+    const updatedApplication = await prisma.$transaction(async (tx) => {
+      // 1. Crear usuario asociado
       const associatedUser = await tx.user.create({
         data: {
           email: application.contactEmail,
@@ -121,20 +123,22 @@ export async function POST(request, { params }) {
         }
       })
 
+      // 2. Crear escenario y vincular al managerUserId
       const scenario = await tx.practiceScenario.create({
         data: {
           name: scenarioName,
           slug: scenarioSlug,
-          description: application.description,
+          description: application.description || 'Sin descripción',
           city: application.city,
-          address: application.address,
-          capacity: application.capacity,
+          address: application.address || '',
+          capacity: application.capacity || 0,
           status: 'ACTIVE',
           managerUserId: associatedUser.id
         }
       })
 
-      const updatedApplication = await tx.scenarioApplication.update({
+      // 3. Actualizar la aplicación vinculando el approvedScenarioId
+      const updatedApp = await tx.scenarioApplication.update({
         where: { id: application.id },
         data: {
           status: 'APPROVED',
@@ -144,24 +148,25 @@ export async function POST(request, { params }) {
         }
       })
 
-      return { associatedUser, scenario, updatedApplication }
+      return { associatedUser, scenario, updatedApp }
     })
 
     return NextResponse.json(
       {
         ok: true,
-        scenario: result.scenario,
-        asociado: { email: result.associatedUser.email, fullName: result.associatedUser.fullName, tempPassword }
+        scenario: updatedApplication.scenario,
+        asociado: { email: updatedApplication.associatedUser.email, fullName: updatedApplication.associatedUser.fullName, tempPassword }
       },
       { headers }
     )
   } catch (error) {
+    console.error("Error en POST /api/admin/scenario-applications/[id]/decision:", error)
     const message = error instanceof Error ? error.message : 'Invalid request'
 
     if (message === 'Too many requests') {
       return NextResponse.json({ error: message }, { status: 429, headers })
     }
 
-    return NextResponse.json({ error: 'Bad request' }, { status: 400, headers })
+    return NextResponse.json({ error: 'Bad request', details: error.message }, { status: 400, headers })
   }
 }

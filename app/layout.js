@@ -3,6 +3,7 @@ import Script from 'next/script'
 import AppShell from './components/AppShell'
 import ScrollObserver from './components/ScrollObserver'
 import ScrollToTop from './components/ScrollToTop'
+import FloatingSocials from './components/FloatingSocials'
 import { Montserrat, Poppins } from 'next/font/google'
 
 // Optimización de fuentes: next/font descarga y sirve las fuentes localmente, eliminando el parpadeo (CLS) y reduciendo el tiempo de carga
@@ -33,41 +34,7 @@ export default function RootLayout({ children }) {
         <meta name="theme-color" content="#0284c7" />
       </head>
       <body>
-        {/* Floating Sidebars (Globales en todas las páginas) */}
-        <div className="floating-social right">
-          <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" className="fs-icon fs-facebook" aria-label="Facebook">
-            <i className="fab fa-facebook-f"></i>
-            <span className="fs-tooltip">Facebook</span>
-          </a>
-          <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="fs-icon fs-instagram" aria-label="Instagram">
-            <i className="fab fa-instagram"></i>
-            <span className="fs-tooltip">Instagram</span>
-          </a>
-          <a href={socialLinks.tiktok} target="_blank" rel="noopener noreferrer" className="fs-icon fs-tiktok" aria-label="TikTok">
-            <i className="fab fa-tiktok"></i>
-            <span className="fs-tooltip">TikTok</span>
-          </a>
-          <a href={socialLinks.youtube} target="_blank" rel="noopener noreferrer" className="fs-icon fs-youtube" aria-label="YouTube">
-            <i className="fab fa-youtube"></i>
-            <span className="fs-tooltip">YouTube</span>
-          </a>
-        </div>
-
-        <div className="floating-social left">
-          <a href={socialLinks.whatsapp} target="_blank" rel="noopener noreferrer" className="fs-icon fs-whatsapp" aria-label="WhatsApp">
-            <i className="fab fa-whatsapp"></i>
-            <span className="fs-tooltip">WhatsApp</span>
-          </a>
-          <a href={`tel:${socialLinks.phone}`} className="fs-icon fs-phone" aria-label="Teléfono">
-            <i className="fas fa-phone-alt"></i>
-            <span className="fs-tooltip">Llamar</span>
-          </a>
-          <a href={`mailto:${socialLinks.email}`} className="fs-icon fs-email" aria-label="Correo">
-            <i className="fas fa-envelope"></i>
-            <span className="fs-tooltip">Correo</span>
-          </a>
-        </div>
-
+        <FloatingSocials socialLinks={socialLinks} />
         <ScrollObserver />
         <ScrollToTop />
         <AppShell>{children}</AppShell>

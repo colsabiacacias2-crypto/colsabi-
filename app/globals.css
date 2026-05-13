@@ -424,14 +424,14 @@ img{max-width:100%;display:block;border-radius:var(--radius)}
 }
 .quick-card:hover::before { opacity: 1; }
 .quick-card__icon{
-  width:64px;
-  height:64px;
+  width:80px;
+  height:80px;
   border-radius:20px;
   display:grid;
   place-items:center;
   background:linear-gradient(135deg, var(--primary), var(--primary-600));
   color:#fff;
-  font-size: 1.5rem;
+  font-size: 2rem;
   box-shadow: 0 10px 20px rgba(2, 132, 199, 0.2);
   transition: transform 0.4s var(--transition-smooth);
 }

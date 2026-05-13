@@ -16,8 +16,8 @@ import { NextResponse } from 'next/server'
 import { z } from 'zod'
 import { getPrisma } from '../../../../lib/prisma'
 import { verifyPassword as comparePasswords } from '../../../../lib/security/password'
-import { signAccessToken } from '../../../../lib/security/jwt'
-import { authCookieName, buildAuthCookieOptions } from '../../../../lib/security/cookies'
+import { signAccessToken, signRefreshToken } from '../../../../lib/security/jwt'
+import { authCookieName, refreshCookieName, buildAuthCookieOptions } from '../../../../lib/security/cookies'
 
 // Esquema de validación para asegurar que los datos de entrada tengan el formato correcto
 const loginSchema = z.object({
@@ -77,14 +77,21 @@ export async function POST(request) {
       )
     }
 
-    // Generar el token JWT con los datos vitales de la sesión
-    const token = await signAccessToken({
+    // Generar el token JWT corto (Access Token)
+    const accessToken = await signAccessToken({
       userId: user.id,
       role: user.role,
       email: user.email
     })
 
-    // Crear la respuesta y adjuntar la cookie HttpOnly
+    // Generar el token JWT largo (Refresh Token)
+    const refreshToken = await signRefreshToken({
+      userId: user.id,
+      role: user.role,
+      email: user.email
+    })
+
+    // Crear la respuesta y adjuntar las cookies HttpOnly
     const response = NextResponse.json({
       message: 'Login exitoso',
       role: user.role,
@@ -96,9 +103,14 @@ export async function POST(request) {
       }
     })
 
-    response.cookies.set(authCookieName, token, {
+    response.cookies.set(authCookieName, accessToken, {
       ...buildAuthCookieOptions(),
-      maxAge: 60 * 60 * 8 // 8 horas de sesión
+      maxAge: 60 * 15 // 15 minutos
+    })
+
+    response.cookies.set(refreshCookieName, refreshToken, {
+      ...buildAuthCookieOptions(),
+      maxAge: 60 * 60 * 24 * 7 // 7 días
     })
 
     return response

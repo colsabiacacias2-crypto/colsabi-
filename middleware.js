@@ -16,8 +16,9 @@
  */
 
 import { NextResponse } from 'next/server'
-import { verifyAccessToken } from './lib/security/jwt'
+import { verifyAccessToken, verifyRefreshToken, signAccessToken } from './lib/security/jwt'
 import { resolveCorsHeaders } from './lib/security/cors'
+import { authCookieName, refreshCookieName, buildAuthCookieOptions } from './lib/security/cookies'
 
 // Prefijos que dictan qué rutas del frontend o de la API requieren un rol específico
 const adminPrefixes = ['/admin', '/api/admin']
@@ -85,23 +86,53 @@ export async function middleware(request) {
     return applySecurityHeaders(NextResponse.next(), origin)
   }
 
-  const token = request.cookies.get('colsabi_token')?.value
+  const accessToken = request.cookies.get(authCookieName)?.value
+  const refreshToken = request.cookies.get(refreshCookieName)?.value
   let session = null
+  let newAccessToken = null
 
-  if (token) {
+  // 1. Intentar validar el Access Token
+  if (accessToken) {
     try {
-      session = await verifyAccessToken(token)
+      session = await verifyAccessToken(accessToken)
     } catch {
       session = null
     }
   }
 
+  // 2. Si el Access Token expiró o no existe, intentar usar el Refresh Token
+  if (!session && refreshToken) {
+    try {
+      session = await verifyRefreshToken(refreshToken)
+      
+      // Si el Refresh Token es válido, emitimos un nuevo Access Token de inmediato
+      newAccessToken = await signAccessToken({
+        userId: session.userId,
+        role: session.role,
+        email: session.email
+      })
+    } catch {
+      session = null
+    }
+  }
+
+  // Función interna para asegurar que la cookie renovada se aplique a cualquier NextResponse
+  const applyTokensAndHeaders = (response) => {
+    if (newAccessToken) {
+      response.cookies.set(authCookieName, newAccessToken, {
+        ...buildAuthCookieOptions(),
+        maxAge: 60 * 15 // 15 minutos
+      })
+    }
+    return applySecurityHeaders(response, origin)
+  }
+
   // Redirigir a usuarios ya autenticados que intenten entrar a la página de login
   if (pathname === '/ingreso' && session) {
     if (session.role === 'ADMIN') {
-      return applySecurityHeaders(NextResponse.redirect(new URL('/admin', request.url)), origin)
+      return applyTokensAndHeaders(NextResponse.redirect(new URL('/admin', request.url)))
     } else if (session.role === 'ASOCIADO') {
-      return applySecurityHeaders(NextResponse.redirect(new URL('/asociado', request.url)), origin)
+      return applyTokensAndHeaders(NextResponse.redirect(new URL('/asociado', request.url)))
     }
   }
 
@@ -110,7 +141,6 @@ export async function middleware(request) {
       if (pathname.startsWith('/api/')) {
         return applySecurityHeaders(NextResponse.json({ error: 'Unauthorized' }, { status: 401 }), origin)
       }
-
       return applySecurityHeaders(NextResponse.redirect(new URL('/ingreso', request.url)), origin)
     }
   }
@@ -120,12 +150,11 @@ export async function middleware(request) {
       if (pathname.startsWith('/api/')) {
         return applySecurityHeaders(NextResponse.json({ error: 'Unauthorized' }, { status: 401 }), origin)
       }
-
       return applySecurityHeaders(NextResponse.redirect(new URL('/ingreso', request.url)), origin)
     }
   }
 
-  return applySecurityHeaders(NextResponse.next(), origin)
+  return applyTokensAndHeaders(NextResponse.next())
 }
 
 export const config = {
