@@ -1,7 +1,15 @@
 'use client'
 import Link from 'next/link'
+import HeroCarousel from './components/HeroCarousel'
+
 export default function Home() {
-  
+  const heroImages = [
+    { src: '/img/aaa/sabiduria3.jpg', alt: 'Estudiantes' },
+    { src: '/img/instalaciones/20240401073902_IMG_9008.JPG', alt: 'Evento' },
+    { src: '/img/instalaciones/_DSC0661.jpg', alt: 'Educación' },
+    { src: '/img/instalaciones/_DSC0676.jpg', alt: 'Instalaciones' }
+  ];
+
   return (
     <main>
       <div className="blob blob-1"></div>
@@ -10,12 +18,7 @@ export default function Home() {
       <section className="hero" id="inicio" aria-label="Portada">
         <div className="container hero-grid">
           {/* Lado Izquierdo: Slider de Imágenes Transicionadas */}
-          <div className="hero-slider reveal-up">
-            <img loading="lazy" src="/img/aaa/sabiduria3.jpg" alt="Estudiantes" />
-            <img loading="lazy" src="/img/instalaciones/20240401073902_IMG_9008.JPG" alt="Evento" />
-            <img loading="lazy" src="/img/instalaciones/_DSC0661.jpg" alt="Educación" />
-            <img loading="lazy" src="/img/instalaciones/_DSC0676.jpg" alt="Instalaciones" />
-          </div>
+          <HeroCarousel images={heroImages} />
 
           {/* Lado Derecho: Contenido */}
           <div className="hero__content reveal-up delay-1">

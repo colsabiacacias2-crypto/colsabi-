@@ -1,6 +1,8 @@
 import './globals.css'
 import Script from 'next/script'
 import AppShell from './components/AppShell'
+import ScrollObserver from './components/ScrollObserver'
+import ScrollToTop from './components/ScrollToTop'
 import { Montserrat, Poppins } from 'next/font/google'
 
 // Optimización de fuentes: next/font descarga y sirve las fuentes localmente, eliminando el parpadeo (CLS) y reduciendo el tiempo de carga
@@ -66,6 +68,8 @@ export default function RootLayout({ children }) {
           </a>
         </div>
 
+        <ScrollObserver />
+        <ScrollToTop />
         <AppShell>{children}</AppShell>
       </body>
     </html>

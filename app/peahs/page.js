@@ -1,4 +1,16 @@
+import MiniCarousel from '../components/MiniCarousel';
+
 export default function Peahs() {
+  const pastoralImages = [
+    { src: '/img/pastoral/Imagen%20de%20WhatsApp%202025-10-15%20a%20las%2006.45.44_8ea3b7f4.jpg', alt: 'Actividad de pastoral 1' },
+    { src: '/img/pastoral/IMG-20251015-WA0004.jpg', alt: 'Actividad de pastoral 2' },
+    { src: '/img/pastoral/IMG-20251015-WA0005.jpg', alt: 'Actividad de pastoral 3' },
+    { src: '/img/pastoral/IMG-20251015-WA0007.jpg', alt: 'Actividad de pastoral 4' },
+    { src: '/img/pastoral/IMG-20251015-WA0008.jpg', alt: 'Actividad de pastoral 5' },
+    { src: '/img/pastoral/IMG-20251015-WA0009.jpg', alt: 'Actividad de pastoral 6' },
+    { src: '/img/pastoral/IMG-20251015-WA0010.jpg', alt: 'Actividad de pastoral 7' }
+  ];
+
   return (
     <main>
       <section className="page-hero" aria-label="Portada de convenios">
@@ -44,19 +56,7 @@ export default function Peahs() {
           </div>
           <div className="pastoral-grid reveal-up delay-1" style={{ maxWidth: '800px', margin: '0 auto' }}>
             <div className="pastoral-card" style={{ background: 'var(--surface-blue)', padding: '2rem', borderRadius: '32px', boxShadow: 'var(--shadow)' }}>
-              <div className="mini-carousel" style={{ borderRadius: '24px', overflow: 'hidden' }}>
-                <div className="carousel-track">
-                  <div className="carousel-slide"><img loading="lazy" src="/img/pastoral/Imagen%20de%20WhatsApp%202025-10-15%20a%20las%2006.45.44_8ea3b7f4.jpg" alt="Actividad de pastoral 1" style={{ width: '100%', height: '400px', objectFit: 'cover' }} /></div>
-                  <div className="carousel-slide"><img loading="lazy" src="/img/pastoral/IMG-20251015-WA0004.jpg" alt="Actividad de pastoral 2" style={{ width: '100%', height: '400px', objectFit: 'cover' }} /></div>
-                  <div className="carousel-slide"><img loading="lazy" src="/img/pastoral/IMG-20251015-WA0005.jpg" alt="Actividad de pastoral 3" style={{ width: '100%', height: '400px', objectFit: 'cover' }} /></div>
-                  <div className="carousel-slide"><img loading="lazy" src="/img/pastoral/IMG-20251015-WA0007.jpg" alt="Actividad de pastoral 4" style={{ width: '100%', height: '400px', objectFit: 'cover' }} /></div>
-                  <div className="carousel-slide"><img loading="lazy" src="/img/pastoral/IMG-20251015-WA0008.jpg" alt="Actividad de pastoral 5" style={{ width: '100%', height: '400px', objectFit: 'cover' }} /></div>
-                  <div className="carousel-slide"><img loading="lazy" src="/img/pastoral/IMG-20251015-WA0009.jpg" alt="Actividad de pastoral 6" style={{ width: '100%', height: '400px', objectFit: 'cover' }} /></div>
-                  <div className="carousel-slide"><img loading="lazy" src="/img/pastoral/IMG-20251015-WA0010.jpg" alt="Actividad de pastoral 7" style={{ width: '100%', height: '400px', objectFit: 'cover' }} /></div>
-                </div>
-                <button className="control prev">&#10094;</button>
-                <button className="control next">&#10095;</button>
-              </div>
+              <MiniCarousel images={pastoralImages} />
               <p className="pastoral-text" style={{ textAlign: 'center', marginTop: '1.5rem', fontWeight: '600', color: 'var(--primary-600)' }}>Galería de Pastoral</p>
             </div>
           </div>
