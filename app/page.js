@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import HeroCarousel from './components/HeroCarousel'
+import AnimatedCircularStat from './components/AnimatedCircularStat'
 
 export default function Home() {
   const heroImages = [
@@ -45,7 +46,23 @@ export default function Home() {
         <div className="container">
           <div className="reveal-up" style={{ textAlign: 'center', marginBottom: '4rem' }}>
             <h2 className="section__title">Explora nuestra <span>Institución</span></h2>
-            <p style={{ color: 'var(--muted)', fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto' }}>Navega a los apartados más consultados y al nuevo módulo de horas sociales de forma rápida y sencilla.</p>
+            <p style={{ color: 'var(--muted)', fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto', marginBottom: '2rem' }}>Navega a los apartados más consultados y al nuevo módulo de horas sociales de forma rápida y sencilla.</p>
+            
+            {/* Banner ICFES Categoría A+ */}
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '3rem' }}>
+              <img 
+                loading="lazy" 
+                src="/img/WhatsApp Image 2026-04-15 at 4.44.55 PM.jpeg" 
+                alt="Colegio Categoría A+ ICFES" 
+                style={{ 
+                  maxWidth: '100%', 
+                  height: 'auto', 
+                  maxHeight: '120px',
+                  objectFit: 'contain',
+                  filter: 'drop-shadow(0 10px 15px rgba(0,0,0,0.1))'
+                }} 
+              />
+            </div>
           </div>
           
           <div className="quick-grid">
@@ -94,6 +111,22 @@ export default function Home() {
             <p style={{ fontSize: '1.15rem', color: 'var(--muted)', lineHeight: '1.8' }}>
               En 2028 seremos referentes regionales por excelencia educativa, identidad SABIDURÍA e innovación tecnológica, proyectando a nuestros estudiantes como líderes éticos y competentes para los desafíos globales.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section stats-section" id="estadisticas" style={{ background: 'linear-gradient(rgba(2, 6, 23, 0.85), rgba(15, 23, 42, 0.95)), url("/img/aaa/sabiduria3.jpg") center/cover fixed', color: 'white', padding: '6rem 0', textAlign: 'center' }}>
+        <div className="container">
+          <div className="reveal-up">
+            <h2 className="section__title" style={{ color: 'white' }}>Nuestras <span>Metas</span></h2>
+            <p style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.8)', marginBottom: '4rem', fontStyle: 'italic' }}>Nos inspira acompañar y transformar vidas</p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '3rem', alignItems: 'center' }}>
+            <AnimatedCircularStat value="20" label="Maestros Certificados" icon="fa-solid fa-user-tie" percentage={100} delay={0} />
+            <AnimatedCircularStat value="410" label="Estudiantes en curso" icon="fa-solid fa-school" percentage={100} delay={200} />
+            <AnimatedCircularStat value="100" suffix="%" label="Recursos Digitales" icon="fa-solid fa-laptop-code" percentage={100} delay={400} />
+            <AnimatedCircularStat value="100" suffix="%" label="Padres Satisfechos" icon="fa-solid fa-users-viewfinder" percentage={100} delay={600} />
           </div>
         </div>
       </section>
