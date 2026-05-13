@@ -67,6 +67,7 @@ export async function OPTIONS(request) {
  * @returns {NextResponse} Respuesta JSON con los resultados de la transacción o mensajes de error.
  */
 export async function POST(request, { params }) {
+  const { id } = await params;
   const origin = request.headers.get('origin') || ''
   const headers = resolveCorsHeaders(origin)
 
@@ -83,7 +84,7 @@ export async function POST(request, { params }) {
     }
 
     const prisma = getPrisma()
-    const application = await prisma.scenarioApplication.findUnique({ where: { id: params.id } })
+    const application = await prisma.scenarioApplication.findUnique({ where: { id } })
 
     if (!application) {
       return NextResponse.json({ error: 'Not found' }, { status: 404, headers })
