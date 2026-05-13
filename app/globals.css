@@ -20,6 +20,12 @@
   --font-heading: var(--font-montserrat), 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Removemos la opacidad 0 para que el texto siempre sea visible */
+.reveal, .reveal-up {
+  opacity: 1;
+  transform: none;
+}
+
 /* Page transitions */
 .page-transition {
   min-height: 100vh;

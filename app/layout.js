@@ -67,7 +67,6 @@ export default function RootLayout({ children }) {
         </div>
 
         <AppShell>{children}</AppShell>
-        <Script src="/js/main.js" strategy="afterInteractive" />
       </body>
     </html>
   )
