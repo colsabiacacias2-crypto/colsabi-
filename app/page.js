@@ -49,17 +49,17 @@ export default function Home() {
             <p style={{ color: 'var(--muted)', fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto', marginBottom: '2rem' }}>Navega a los apartados más consultados y al nuevo módulo de horas sociales de forma rápida y sencilla.</p>
             
             {/* Banner ICFES Categoría A+ */}
-            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '3rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '5rem', marginTop: '3rem' }}>
               <img 
                 loading="lazy" 
                 src="/img/WhatsApp Image 2026-04-15 at 4.44.55 PM.jpeg" 
                 alt="Colegio Categoría A+ ICFES" 
                 style={{ 
-                  maxWidth: '100%', 
+                  width: '100%',
+                  maxWidth: '950px', 
                   height: 'auto', 
-                  maxHeight: '120px',
                   objectFit: 'contain',
-                  filter: 'drop-shadow(0 10px 15px rgba(0,0,0,0.1))'
+                  filter: 'drop-shadow(0 15px 25px rgba(0,0,0,0.15))'
                 }} 
               />
             </div>
