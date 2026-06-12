@@ -24,6 +24,9 @@ export default function AdminLayout({ children }) {
             <Link href="/admin/postulaciones" className={pathname === '/admin/postulaciones' ? 'active' : ''}>
               Gestión de postulaciones
             </Link>
+            <Link href="/admin/escenarios" className={pathname === '/admin/escenarios' || pathname.startsWith('/admin/escenarios/') ? 'active' : ''}>
+              Gestión de escenarios
+            </Link>
             <Link href="/">Volver al sitio público</Link>
             
             <div style={{ marginTop: 'auto', paddingTop: '2rem' }}>
