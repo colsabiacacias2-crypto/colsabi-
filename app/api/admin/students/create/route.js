@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
-import { corsPreflight, resolveCorsHeaders } from '../../../../lib/security/cors'
-import { enforceRateLimit, getClientIp, assertJsonRequest, sanitizePayload } from '../../../../lib/security/request'
-import { hasDatabase, getPrisma } from '../../../../lib/prisma'
+import { corsPreflight, resolveCorsHeaders } from '../../../../../lib/security/cors'
+import { enforceRateLimit, getClientIp, assertJsonRequest, sanitizePayload } from '../../../../../lib/security/request'
+import { hasDatabase, getPrisma } from '../../../../../lib/prisma'
 
 /**
  * @fileoverview Endpoint para la creación directa de estudiantes en el sistema.
