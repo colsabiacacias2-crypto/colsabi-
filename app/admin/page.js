@@ -16,10 +16,10 @@ export default async function AdminPage() {
   ])
 
   const summaryCards = [
-    { label: 'Postulaciones pendientes', value: pendientes.toString(), accent: 'blue' },
-    { label: 'Escenarios activos', value: escenarios.toString(), accent: 'green' },
-    { label: 'Asociados habilitados', value: asociados.toString(), accent: 'yellow' },
-    { label: 'Horas auditadas', value: horas.toString(), accent: 'blue' }
+    { label: 'Postulaciones pendientes', value: pendientes.toString(), accent: 'blue', href: '/admin/postulaciones' },
+    { label: 'Escenarios activos', value: escenarios.toString(), accent: 'green', href: '/admin/escenarios' },
+    { label: 'Asociados habilitados', value: asociados.toString(), accent: 'yellow', href: '/admin' },
+    { label: 'Horas auditadas', value: horas.toString(), accent: 'blue', href: '/admin' }
   ]
 
   const pipeline = [
@@ -40,10 +40,12 @@ export default async function AdminPage() {
       </header>
       <div className="workspace-grid workspace-grid--cards">
         {summaryCards.map((card) => (
-          <article key={card.label} className={`workspace-card workspace-card--${card.accent}`}>
-            <span>{card.label}</span>
-            <strong>{card.value}</strong>
-          </article>
+          <Link key={card.label} href={card.href} style={{ textDecoration: 'none' }}>
+            <article className={`workspace-card workspace-card--${card.accent}`} style={{ height: '100%', cursor: 'pointer', transition: 'transform 0.2s ease, box-shadow 0.2s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-2px)'} onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
+              <span>{card.label}</span>
+              <strong>{card.value}</strong>
+            </article>
+          </Link>
         ))}
       </div>
       <div className="workspace-grid workspace-grid--main">
