@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
-import { corsPreflight, resolveCorsHeaders } from '../../../../../lib/security/cors'
-import { enforceRateLimit, getClientIp } from '../../../../../lib/security/request'
-import { hasDatabase, getPrisma } from '../../../../../lib/prisma'
+import { corsPreflight, resolveCorsHeaders } from '../../../../../../lib/security/cors'
+import { enforceRateLimit, getClientIp } from '../../../../../../lib/security/request'
+import { hasDatabase, getPrisma } from '../../../../../../lib/prisma'
 
 /**
  * @fileoverview Endpoint para listar los estudiantes asignados a un escenario específico 
@@ -35,7 +35,7 @@ export async function GET(request, { params }) {
   try {
     enforceRateLimit(`admin:list-scenario-students:${getClientIp(request)}`)
 
-    const { id } = params
+    const { id } = await params
     if (!id) {
       return NextResponse.json({ error: 'ID de escenario requerido' }, { status: 400, headers })
     }
