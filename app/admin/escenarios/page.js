@@ -1,5 +1,6 @@
 import { getPrisma } from '../../../lib/prisma'
 import Link from 'next/link'
+import ScenarioActions from './ScenarioActions'
 
 export const dynamic = 'force-dynamic'
 
@@ -81,13 +82,7 @@ export default async function EscenariosPage() {
                         </span>
                       </td>
                       <td style={{ padding: '1rem 0.5rem', textAlign: 'right' }}>
-                        <Link 
-                          href={`/admin/escenarios/${escenario.id}/estudiantes`} 
-                          className="workspace-btn workspace-btn--ghost"
-                          style={{ padding: '0.5rem 1rem', fontSize: '0.85rem' }}
-                        >
-                          Ver Estudiantes
-                        </Link>
+                        <ScenarioActions escenarioId={escenario.id} escenarioName={escenario.name} />
                       </td>
                     </tr>
                   ))}
