@@ -114,6 +114,18 @@ export async function DELETE(request, { params }) {
       await tx.practiceScenario.delete({
         where: { id }
       })
+
+      // 3. Eliminar al usuario "Asociado" que administraba este escenario (si existe)
+      if (scenario.managerUserId) {
+        // Primero limpiar posibles registros de auditoría vinculados al usuario para evitar errores de llave foránea
+        await tx.auditLog.deleteMany({
+          where: { userId: scenario.managerUserId }
+        })
+        
+        await tx.user.delete({
+          where: { id: scenario.managerUserId }
+        })
+      }
     })
 
     return NextResponse.json({ ok: true, message: 'Escenario eliminado correctamente' }, { headers })

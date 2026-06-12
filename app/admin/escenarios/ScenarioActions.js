@@ -55,10 +55,11 @@ export default function ScenarioActions({ escenarioId, escenarioName }) {
         <Link 
           href={`/admin/escenarios/${escenarioId}/estudiantes`} 
           className="workspace-btn workspace-btn--ghost"
-          style={{ padding: '0.5rem 0.8rem', fontSize: '0.85rem' }}
+          style={{ padding: '0.5rem 0.8rem', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}
           title="Ver Estudiantes"
         >
           <i className="fa-solid fa-users"></i>
+          <span style={{ fontWeight: 'bold' }}>Asignar Estudiantes</span>
         </Link>
         <button 
           onClick={handleViewDetails}
