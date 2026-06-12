@@ -67,28 +67,28 @@ export default function Home() {
           
           <div className="quick-grid">
             <Link className="quick-card reveal-up delay-1" href="/postular-escenario">
-              <span className="quick-card__icon"><i className="fa-solid fa-briefcase"></i></span>
+              <span className="quick-card__icon" style={{ background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)', boxShadow: '0 10px 20px rgba(59, 130, 246, 0.3)' }}><i className="fa-solid fa-briefcase"></i></span>
               <div>
                 <strong>Postular escenario</strong>
                 <span>Registra una propuesta de práctica</span>
               </div>
             </Link>
             <Link className="quick-card reveal-up delay-2" href="/ingreso">
-              <span className="quick-card__icon" style={{ background: 'linear-gradient(135deg, var(--success), var(--success-700))'}}><i className="fa-solid fa-user-clock"></i></span>
+              <span className="quick-card__icon" style={{ background: 'linear-gradient(135deg, #10b981, #047857)', boxShadow: '0 10px 20px rgba(16, 185, 129, 0.3)' }}><i className="fa-solid fa-user-clock"></i></span>
               <div>
                 <strong>Horas Sociales</strong>
                 <span>Módulo administrativo</span>
               </div>
             </Link>
             <Link className="quick-card reveal-up delay-3" href="/convenios">
-              <span className="quick-card__icon" style={{ background: 'linear-gradient(135deg, var(--accent), #d97706)'}}><i className="fa-solid fa-handshake"></i></span>
+              <span className="quick-card__icon" style={{ background: 'linear-gradient(135deg, #f59e0b, #b45309)', boxShadow: '0 10px 20px rgba(245, 158, 11, 0.3)' }}><i className="fa-solid fa-handshake"></i></span>
               <div>
                 <strong>Convenios</strong>
                 <span>Alianzas universitarias</span>
               </div>
             </Link>
             <Link className="quick-card reveal-up delay-1" href="/peahs">
-              <span className="quick-card__icon"><i className="fa-solid fa-seedling"></i></span>
+              <span className="quick-card__icon" style={{ background: 'linear-gradient(135deg, #8b5cf6, #4c1d95)', boxShadow: '0 10px 20px rgba(139, 92, 246, 0.3)' }}><i className="fa-solid fa-seedling"></i></span>
               <div>
                 <strong>PEAHS</strong>
                 <span>Pastoral y proyectos</span>

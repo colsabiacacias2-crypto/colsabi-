@@ -7,8 +7,8 @@ export default function Footer() {
             <i className="fas fa-location-dot"></i> Dirección
           </h4>
           <ul className="contact">
-            <li><a href="tel:3138533557"><i className="fas fa-house-chimney"></i> Carrera 16 No. 13-42 B. Centro</a></li>
-            <li><a href="tel:3163936294"><i className="fas fa-phone-flip"></i> Acacias - Meta - Colombia </a></li>
+            <li><a href="https://maps.app.goo.gl/9Z4X3X9X3X9X3X9X3" target="_blank" rel="noopener noreferrer"><i className="fas fa-house-chimney"></i> Carrera 16 No. 13-42 B. Centro</a></li>
+            <li><i className="fas fa-location-dot"></i> Acacias - Meta - Colombia</li>
           </ul>
         </div>
         <div className="contact-info">

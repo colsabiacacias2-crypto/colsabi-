@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 export default function IngresoPage() {
   const [showForm, setShowForm] = useState(false)
@@ -48,6 +49,9 @@ export default function IngresoPage() {
     <main className="workspace-auth">
       <section className="workspace-auth__panel">
         <div className="workspace-auth__content">
+          <Link href="/" style={{ textDecoration: 'none', color: 'var(--muted)', fontSize: '0.9rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.5rem', fontWeight: 500 }}>
+            &larr; Volver a la página principal
+          </Link>
           <span className="workspace-auth__eyebrow">Acceso seguro</span>
           <h1>Plataforma de horas sociales</h1>
           <p>
@@ -105,20 +109,6 @@ export default function IngresoPage() {
               </div>
             </form>
           )}
-        </div>
-        <div className="workspace-auth__card">
-          <div className="workspace-stat">
-            <strong>Arquitectura</strong>
-            <span>Next.js + Prisma + Supabase</span>
-          </div>
-          <div className="workspace-stat">
-            <strong>Seguridad</strong>
-            <span>JWT, middleware, CORS y filtros</span>
-          </div>
-          <div className="workspace-stat">
-            <strong>Operación</strong>
-            <span>Admin y asociados con vistas separadas</span>
-          </div>
         </div>
       </section>
     </main>
