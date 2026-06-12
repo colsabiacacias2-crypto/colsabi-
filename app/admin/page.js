@@ -40,8 +40,8 @@ export default async function AdminPage() {
       </header>
       <div className="workspace-grid workspace-grid--cards">
         {summaryCards.map((card) => (
-          <Link key={card.label} href={card.href} style={{ textDecoration: 'none' }}>
-            <article className={`workspace-card workspace-card--${card.accent}`} style={{ height: '100%', cursor: 'pointer', transition: 'transform 0.2s ease, box-shadow 0.2s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-2px)'} onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
+          <Link key={card.label} href={card.href} style={{ textDecoration: 'none', display: 'block' }}>
+            <article className={`workspace-card workspace-card--${card.accent}`} style={{ height: '100%', cursor: 'pointer' }}>
               <span>{card.label}</span>
               <strong>{card.value}</strong>
             </article>
