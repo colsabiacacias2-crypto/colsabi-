@@ -51,9 +51,9 @@ export default async function PostulacionesPage() {
                         <div><strong>Fecha:</strong> {new Date(app.createdAt).toLocaleDateString('es-CO')}</div>
                       </div>
                       
-                      <div style={{ marginTop: '1rem', background: 'var(--bg-alt)', padding: '1rem', borderRadius: '8px', fontSize: '0.95rem' }}>
+                      <div style={{ marginTop: '1rem', background: 'var(--bg-alt)', padding: '1rem', borderRadius: '8px', fontSize: '0.95rem', maxHeight: '200px', overflowY: 'auto' }}>
                         <strong>Descripción de actividades:</strong>
-                        <p style={{ margin: '0.5rem 0 0 0' }}>{app.description}</p>
+                        <p style={{ margin: '0.5rem 0 0 0', wordBreak: 'break-word' }}>{app.description}</p>
                       </div>
                     </div>
 

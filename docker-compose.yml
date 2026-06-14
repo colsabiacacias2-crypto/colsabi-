@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  colsabi-web:
+    container_name: colsabi_web_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    restart: unless-stopped
+    # Permite que la aplicación consuma la base de datos externa de Supabase sin problemas
+    environment:
+      - NODE_ENV=production
