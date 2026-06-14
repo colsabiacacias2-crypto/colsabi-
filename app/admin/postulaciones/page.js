@@ -34,7 +34,7 @@ export default async function PostulacionesPage() {
               <p>No hay postulaciones pendientes por revisar en este momento.</p>
             </div>
           ) : (
-            <div style={{ display: 'grid', gap: '1.5rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
               {postulaciones.map((app) => (
                 <div key={app.id} style={{ border: '1px solid var(--border)', borderRadius: '12px', padding: '1.5rem', background: '#fff' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem' }}>
