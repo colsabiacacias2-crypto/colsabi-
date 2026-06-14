@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
-import { corsPreflight, resolveCorsHeaders } from '../../../lib/security/cors'
-import { enforceRateLimit, getClientIp, assertJsonRequest, sanitizePayload } from '../../../lib/security/request'
-import { hasDatabase, getPrisma } from '../../../lib/prisma'
-import { verifyAccessToken } from '../../../lib/security/jwt'
-import { authCookieName } from '../../../lib/security/cookies'
+import { corsPreflight, resolveCorsHeaders } from '../../../../lib/security/cors'
+import { enforceRateLimit, getClientIp, assertJsonRequest, sanitizePayload } from '../../../../lib/security/request'
+import { hasDatabase, getPrisma } from '../../../../lib/prisma'
+import { verifyAccessToken } from '../../../../lib/security/jwt'
+import { authCookieName } from '../../../../lib/security/cookies'
 
 /**
  * @fileoverview Endpoint para que un Asociado registre horas sociales a un estudiante.

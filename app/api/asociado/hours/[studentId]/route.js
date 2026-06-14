@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server'
-import { corsPreflight, resolveCorsHeaders } from '../../../../lib/security/cors'
-import { enforceRateLimit, getClientIp } from '../../../../lib/security/request'
-import { hasDatabase, getPrisma } from '../../../../lib/prisma'
-import { verifyAccessToken } from '../../../../lib/security/jwt'
-import { authCookieName } from '../../../../lib/security/cookies'
+import { corsPreflight, resolveCorsHeaders } from '../../../../../lib/security/cors'
+import { enforceRateLimit, getClientIp } from '../../../../../lib/security/request'
+import { hasDatabase, getPrisma } from '../../../../../lib/prisma'
+import { verifyAccessToken } from '../../../../../lib/security/jwt'
+import { authCookieName } from '../../../../../lib/security/cookies'
 
 /**
  * @fileoverview Endpoint para que un Asociado vea el historial de horas de un estudiante.

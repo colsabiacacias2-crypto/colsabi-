@@ -15,9 +15,9 @@ COPY package.json pnpm-lock.yaml* ./
 COPY prisma ./prisma
 
 # Instalamos las dependencias
-# Desactivamos el bloqueo de scripts de pnpm v11+ para que Prisma pueda generar su cliente
+# Desactivamos el bloqueo de scripts de pnpm v11+ y aprobamos dependencias
 RUN pnpm config set ignore-scripts false
-RUN pnpm install --frozen-lockfile || pnpm install
+RUN pnpm install --frozen-lockfile --config.ignore-scripts=false || pnpm install --config.ignore-scripts=false
 
 # ==========================================
 # Etapa 2: Construir la aplicación
@@ -58,6 +58,7 @@ USER nextjs
 
 EXPOSE 3000
 ENV PORT 3000
+# El host se deja en 0.0.0.0 para que escuche en todas las interfaces de red del contenedor (ideal para Railway/Render/AWS)
 ENV HOSTNAME "0.0.0.0"
 
 # Ejecutamos el servidor standalone de Next.js (optimizado)
