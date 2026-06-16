@@ -84,7 +84,7 @@ export async function POST(request, { params }) {
     }
 
     const prisma = getPrisma()
-    const application = await prisma.scenarioApplication.findUnique({ where: { id } })
+    const application = await prisma.postulacionEscenario.findUnique({ where: { id } })
 
     if (!application) {
       return NextResponse.json({ error: 'Not found' }, { status: 404, headers })
@@ -95,7 +95,7 @@ export async function POST(request, { params }) {
     }
 
     if (payload.decision === 'REJECT') {
-      const updated = await prisma.scenarioApplication.update({
+      const updated = await prisma.postulacionEscenario.update({
         where: { id: application.id },
         data: {
           status: 'REJECTED',
@@ -114,7 +114,7 @@ export async function POST(request, { params }) {
 
     const updatedApplication = await prisma.$transaction(async (tx) => {
       // 1. Crear usuario asociado
-      const associatedUser = await tx.user.create({
+      const associatedUser = await tx.usuario.create({
         data: {
           email: application.contactEmail,
           fullName: application.contactName,
@@ -125,7 +125,7 @@ export async function POST(request, { params }) {
       })
 
       // 2. Crear escenario y vincular al managerUserId
-      const scenario = await tx.practiceScenario.create({
+      const scenario = await tx.escenarioPractica.create({
         data: {
           name: scenarioName,
           slug: scenarioSlug,
@@ -139,7 +139,7 @@ export async function POST(request, { params }) {
       })
 
       // 3. Actualizar la aplicación vinculando el approvedScenarioId
-      const updatedApp = await tx.scenarioApplication.update({
+      const updatedApp = await tx.postulacionEscenario.update({
         where: { id: application.id },
         data: {
           status: 'APPROVED',

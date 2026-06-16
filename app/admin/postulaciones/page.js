@@ -7,7 +7,7 @@ export default async function PostulacionesPage() {
   const prisma = getPrisma()
   
   // Buscar todas las postulaciones en estado PENDING ordenadas por la más reciente
-  const postulaciones = await prisma.scenarioApplication.findMany({
+  const postulaciones = await prisma.postulacionEscenario.findMany({
     where: { status: 'PENDING' },
     orderBy: { createdAt: 'desc' }
   })

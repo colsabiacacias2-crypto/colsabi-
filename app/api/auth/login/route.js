@@ -57,7 +57,7 @@ export async function POST(request) {
     const prisma = getPrisma()
 
     // Búsqueda del usuario en la base de datos
-    const user = await prisma.user.findUnique({
+    const user = await prisma.usuario.findUnique({
       where: { email: email.toLowerCase() }
     })
 

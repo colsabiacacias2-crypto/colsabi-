@@ -31,7 +31,8 @@ export async function POST(req) {
     // 2. Conectar a la base de datos y guardar la postulación
     const prisma = getPrisma()
     
-    const newApplication = await prisma.scenarioApplication.create({
+    // Guardar en la base de datos usando el nuevo nombre en español
+    const newApplication = await prisma.postulacionEscenario.create({
       data: {
         organizationName: data.organizationName,
         contactName: data.contactName,

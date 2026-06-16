@@ -8,11 +8,11 @@ export default async function AdminPage() {
   
   // Consultar datos reales de la base de datos
   const [pendientes, escenarios, asociados, horas] = await Promise.all([
-    prisma.scenarioApplication.count({ where: { status: 'PENDING' } }),
-    prisma.practiceScenario.count({ where: { status: 'ACTIVE' } }),
-    prisma.user.count({ where: { role: 'ASOCIADO', status: 'ACTIVE' } }),
+    prisma.postulacionEscenario.count({ where: { status: 'PENDING' } }),
+    prisma.escenarioPractica.count({ where: { status: 'ACTIVE' } }),
+    prisma.usuario.count({ where: { role: 'ASOCIADO', status: 'ACTIVE' } }),
     // En un futuro sumaremos las horas, por ahora dejamos un placeholder 0
-    prisma.socialHourEntry ? prisma.socialHourEntry.count() : 0 
+    prisma.registroHoraSocial ? prisma.registroHoraSocial.count() : 0 
   ])
 
   const summaryCards = [

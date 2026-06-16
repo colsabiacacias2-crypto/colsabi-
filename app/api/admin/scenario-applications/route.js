@@ -33,7 +33,7 @@ export async function GET(request) {
     }
 
     const prisma = getPrisma()
-    const items = await prisma.scenarioApplication.findMany({
+    const items = await prisma.postulacionEscenario.findMany({
       where: query.status ? { status: query.status } : undefined,
       orderBy: { submittedAt: 'desc' },
       take: query.take,
