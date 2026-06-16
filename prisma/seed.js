@@ -22,7 +22,7 @@ async function main() {
   console.log('Iniciando el seeding de la base de datos...')
 
   // Verificar si ya existe un admin en la tabla de usuarios
-  const existingAdmin = await prisma.usuario.findFirst({
+  const existingAdmin = await prisma.user.findFirst({
     where: { role: 'ADMIN' },
   })
 
@@ -49,7 +49,7 @@ async function main() {
   const passwordHash = await bcrypt.hash(plainPassword, saltRounds)
 
   // Crear el usuario administrador único e insertarlo en Supabase
-  const adminUser = await prisma.usuario.create({
+  const adminUser = await prisma.user.create({
     data: {
       email: 'admin@colsabi.edu.co', // El correo con el que se inicia sesión
       fullName: 'Administrador Principal',
