@@ -15,9 +15,11 @@ COPY package.json pnpm-lock.yaml* ./
 COPY prisma ./prisma
 
 # Instalamos las dependencias
-# Desactivamos el bloqueo de scripts de pnpm v11+ y aprobamos dependencias
-RUN pnpm config set ignore-scripts false
-RUN pnpm install --frozen-lockfile --config.ignore-scripts=false || pnpm install --config.ignore-scripts=false
+# Configuramos pnpm para que ignore explícitamente los scripts durante la instalación
+# y luego ejecutamos manualmente el script crítico de Prisma
+RUN pnpm config set ignore-scripts true
+RUN pnpm install --frozen-lockfile || pnpm install
+RUN npx prisma generate
 
 # ==========================================
 # Etapa 2: Construir la aplicación

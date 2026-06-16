@@ -44,7 +44,7 @@ enum HourEntryStatus {
   REJECTED
 }
 
-model User {
+model Usuario {
   id                     String                @id @default(cuid())
   email                  String                @unique
   fullName               String
@@ -53,13 +53,15 @@ model User {
   status                 UserStatus            @default(PENDING)
   createdAt              DateTime              @default(now())
   updatedAt              DateTime              @updatedAt
-  managedScenarios       PracticeScenario[]    @relation("ScenarioManager")
-  decidedApplications    ScenarioApplication[] @relation("ApplicationDecision")
-  hourReviews            SocialHourEntry[]     @relation("EntryReviewer")
-  auditLogs              AuditLog[]
+  managedScenarios       EscenarioPractica[]   @relation("ScenarioManager")
+  decidedApplications    PostulacionEscenario[] @relation("ApplicationDecision")
+  hourReviews            RegistroHoraSocial[]  @relation("EntryReviewer")
+  auditLogs              BitacoraAuditoria[]
+
+  @@map("usuarios")
 }
 
-model ScenarioApplication {
+model PostulacionEscenario {
   id                     String            @id @default(cuid())
   organizationName       String
   contactName            String
@@ -77,11 +79,13 @@ model ScenarioApplication {
   decidedByUserId        String?
   createdAt              DateTime          @default(now())
   updatedAt              DateTime          @updatedAt
-  approvedScenario       PracticeScenario? @relation(fields: [approvedScenarioId], references: [id])
-  decidedBy              User?             @relation("ApplicationDecision", fields: [decidedByUserId], references: [id])
+  approvedScenario       EscenarioPractica? @relation(fields: [approvedScenarioId], references: [id])
+  decidedBy              Usuario?          @relation("ApplicationDecision", fields: [decidedByUserId], references: [id])
+
+  @@map("postulaciones_escenarios")
 }
 
-model PracticeScenario {
+model EscenarioPractica {
   id                     String                     @id @default(cuid())
   name                   String
   slug                   String                     @unique
@@ -93,13 +97,15 @@ model PracticeScenario {
   managerUserId          String?
   createdAt              DateTime                   @default(now())
   updatedAt              DateTime                   @updatedAt
-  manager                User?                      @relation("ScenarioManager", fields: [managerUserId], references: [id])
-  application            ScenarioApplication?
-  studentAssignments     StudentScenarioAssignment[]
-  hourEntries            SocialHourEntry[]
+  manager                Usuario?                   @relation("ScenarioManager", fields: [managerUserId], references: [id])
+  application            PostulacionEscenario?
+  studentAssignments     AsignacionEstudianteEscenario[]
+  hourEntries            RegistroHoraSocial[]
+
+  @@map("escenarios_practica")
 }
 
-model Student {
+model Estudiante {
   id                     String                     @id @default(cuid())
   studentCode            String                     @unique
   documentNumber         String?                    @unique
@@ -111,11 +117,13 @@ model Student {
   isActive               Boolean                    @default(true)
   createdAt              DateTime                   @default(now())
   updatedAt              DateTime                   @updatedAt
-  assignments            StudentScenarioAssignment[]
-  hourEntries            SocialHourEntry[]
+  assignments            AsignacionEstudianteEscenario[]
+  hourEntries            RegistroHoraSocial[]
+
+  @@map("estudiantes")
 }
 
-model StudentScenarioAssignment {
+model AsignacionEstudianteEscenario {
   id                     String           @id @default(cuid())
   studentId              String
   scenarioId             String
@@ -124,14 +132,15 @@ model StudentScenarioAssignment {
   requiredHours          Int              @default(80)
   approvedHours          Int              @default(0)
   status                 AssignmentStatus @default(ACTIVE)
-  student                Student          @relation(fields: [studentId], references: [id], onDelete: Cascade)
-  scenario               PracticeScenario @relation(fields: [scenarioId], references: [id], onDelete: Cascade)
+  student                Estudiante       @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  scenario               EscenarioPractica @relation(fields: [scenarioId], references: [id], onDelete: Cascade)
 
   @@unique([studentId, scenarioId])
   @@index([scenarioId, status])
+  @@map("asignaciones_estudiantes_escenarios")
 }
 
-model SocialHourEntry {
+model RegistroHoraSocial {
   id                     String           @id @default(cuid())
   studentId              String
   scenarioId             String
@@ -148,16 +157,17 @@ model SocialHourEntry {
   reviewedAt             DateTime?
   createdAt              DateTime         @default(now())
   updatedAt              DateTime         @updatedAt
-  student                Student          @relation(fields: [studentId], references: [id], onDelete: Cascade)
-  scenario               PracticeScenario @relation(fields: [scenarioId], references: [id], onDelete: Cascade)
-  reviewedBy             User?            @relation("EntryReviewer", fields: [reviewedByUserId], references: [id])
+  student                Estudiante       @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  scenario               EscenarioPractica @relation(fields: [scenarioId], references: [id], onDelete: Cascade)
+  reviewedBy             Usuario?         @relation("EntryReviewer", fields: [reviewedByUserId], references: [id])
 
   @@index([studentId, status])
   @@index([scenarioId, status])
   @@index([workDate])
+  @@map("registros_horas_sociales")
 }
 
-model AuditLog {
+model BitacoraAuditoria {
   id                     String   @id @default(cuid())
   userId                 String?
   action                 String
@@ -167,8 +177,9 @@ model AuditLog {
   userAgent              String?
   details                Json?
   createdAt              DateTime @default(now())
-  user                   User?    @relation(fields: [userId], references: [id])
+  user                   Usuario? @relation(fields: [userId], references: [id])
 
   @@index([entity, entityId])
   @@index([createdAt])
+  @@map("bitacoras_auditoria")
 }
