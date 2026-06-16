@@ -1,28 +1,87 @@
-import Link from 'next/link'
+'use client'
 
-const associatedStats = [
-  { label: 'Escenario asignado', value: '01' },
-  { label: 'Estudiantes activos', value: '24' },
-  { label: 'Horas pendientes', value: '38' },
-  { label: 'Horas aprobadas', value: '412' }
-]
+import { useEffect, useState } from 'react'
 
 export default function AsociadoPage() {
+  const [stats, setStats] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    async function fetchStats() {
+      try {
+        const response = await fetch('/api/asociado/dashboard')
+        const data = await response.json()
+        
+        if (!response.ok) {
+          throw new Error(data.error || 'Error al obtener estadísticas')
+        }
+        
+        setStats(data.stats)
+      } catch (err) {
+        setError(err.message)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchStats()
+  }, [])
+
+  if (loading) {
+    return (
+      <>
+        <header className="workspace-topbar">
+          <div>
+            <span className="workspace-topbar__eyebrow">Cargando...</span>
+            <div style={{ height: '32px', width: '300px', background: '#e2e8f0', borderRadius: '4px', marginTop: '8px', animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite' }}></div>
+          </div>
+        </header>
+        <div className="workspace-grid workspace-grid--cards">
+          {[1, 2, 3, 4].map((i) => (
+            <article key={i} className="workspace-card workspace-card--neutral" style={{ height: '100px', background: '#f1f5f9', animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite' }}>
+            </article>
+          ))}
+        </div>
+      </>
+    )
+  }
+
+  if (error) {
+    return (
+      <div style={{ padding: '2rem', textAlign: 'center', color: '#ef4444' }}>
+        <i className="fa-solid fa-circle-exclamation" style={{ fontSize: '3rem', marginBottom: '1rem' }}></i>
+        <h2>Error al cargar el panel</h2>
+        <p>{error}</p>
+      </div>
+    )
+  }
+
   return (
     <>
       <header className="workspace-topbar">
         <div>
-          <span className="workspace-topbar__eyebrow">Asociado</span>
-          <h1>Auditoría y seguimiento del escenario</h1>
+          <span className="workspace-topbar__eyebrow">Escenario Asignado</span>
+          <h1 style={{ color: '#0f172a' }}>{stats?.scenarioName || 'Sin asignar'}</h1>
         </div>
       </header>
       <div className="workspace-grid workspace-grid--cards">
-        {associatedStats.map((card) => (
-          <article key={card.label} className="workspace-card workspace-card--neutral">
-            <span>{card.label}</span>
-            <strong>{card.value}</strong>
-          </article>
-        ))}
+        <article className="workspace-card workspace-card--neutral">
+          <span>Cupos Ocupados</span>
+          <strong>{stats?.totalStudents || 0} / {stats?.capacity || 0}</strong>
+        </article>
+        <article className="workspace-card workspace-card--neutral">
+          <span>Horas Aprobadas</span>
+          <strong>{stats?.totalApprovedHours || 0}</strong>
+        </article>
+        <article className="workspace-card workspace-card--neutral">
+          <span>Horas Requeridas</span>
+          <strong>{stats?.totalRequiredHours || 0}</strong>
+        </article>
+        <article className="workspace-card workspace-card--neutral">
+          <span>Progreso General</span>
+          <strong>{stats?.completionPercentage || 0}%</strong>
+        </article>
       </div>
       <div className="workspace-grid workspace-grid--main">
         <article className="workspace-panel">
@@ -31,10 +90,10 @@ export default function AsociadoPage() {
             <span>Operación diaria</span>
           </div>
           <ul className="workspace-checks">
-            <li>Revisar evidencias pendientes</li>
-            <li>Aprobar o rechazar registros de horas</li>
-            <li>Registrar observaciones por estudiante</li>
-            <li>Monitorear avance frente a horas requeridas</li>
+            <li>Revisar estudiantes asignados</li>
+            <li>Registrar horas de los estudiantes día a día</li>
+            <li>Revisar el historial de actividades registradas</li>
+            <li>Monitorear avance frente a la meta (80 hrs)</li>
           </ul>
         </article>
         <article className="workspace-panel">
@@ -43,13 +102,20 @@ export default function AsociadoPage() {
             <span>Buenas prácticas</span>
           </div>
           <ul className="workspace-checks">
-            <li>Acceso limitado al escenario asignado</li>
-            <li>Bitácora de cambios y revisiones</li>
-            <li>Sesiones protegidas con token JWT</li>
-            <li>Endpoints validados y filtrados</li>
+            <li>Acceso limitado únicamente a su escenario</li>
+            <li>Bitácora de todos los registros de horas realizados</li>
+            <li>No se pueden registrar horas sin una actividad justificada</li>
+            <li>Las horas son inmutables una vez registradas</li>
           </ul>
         </article>
       </div>
+      
+      <style dangerouslySetContent={{__html: `
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: .5; }
+        }
+      `}} />
     </>
   )
 }

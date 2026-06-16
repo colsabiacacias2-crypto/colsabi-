@@ -24,6 +24,9 @@ export default function AsociadoLayout({ children }) {
             <Link href="/asociado/evaluacion" className={pathname === '/asociado/evaluacion' ? 'active' : ''}>
               Evaluar Horas
             </Link>
+            <Link href="/asociado/configuracion" className={pathname === '/asociado/configuracion' ? 'active' : ''}>
+              Configuración
+            </Link>
             <Link href="/">Sitio institucional</Link>
             
             <div style={{ marginTop: 'auto', paddingTop: '2rem' }}>
