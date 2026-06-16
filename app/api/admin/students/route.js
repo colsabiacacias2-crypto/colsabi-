@@ -62,7 +62,7 @@ export async function GET(request) {
       where.grade = query.grade
     }
 
-    const items = await prisma.student.findMany({
+    const items = await prisma.estudiante.findMany({
       where,
       orderBy: { fullName: 'asc' },
       take: query.take,

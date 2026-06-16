@@ -49,7 +49,7 @@ export async function GET(request) {
     const prisma = getPrisma()
 
     // 2. Encontrar el escenario que maneja este usuario
-    const scenario = await prisma.practiceScenario.findFirst({
+    const scenario = await prisma.escenarioPractica.findFirst({
       where: { managerUserId: session.userId }
     })
 
@@ -68,7 +68,7 @@ export async function GET(request) {
     }
 
     // 3. Calcular estadísticas reales desde la base de datos
-    const assignments = await prisma.studentScenarioAssignment.findMany({
+    const assignments = await prisma.asignacionEstudianteEscenario.findMany({
       where: { scenarioId: scenario.id },
       select: {
         approvedHours: true,

@@ -53,8 +53,8 @@ export async function GET(request, { params }) {
 
     const prisma = getPrisma()
 
-    // 2. Validar que el usuario maneja un escenario
-    const scenario = await prisma.practiceScenario.findFirst({
+    // 2. Encontrar el escenario que maneja este usuario
+    const scenario = await prisma.escenarioPractica.findFirst({
       where: { managerUserId: session.userId }
     })
 
@@ -62,17 +62,17 @@ export async function GET(request, { params }) {
       return NextResponse.json({ error: 'No tienes un escenario asignado' }, { status: 404, headers })
     }
 
-    // 3. Obtener el historial de horas de ese estudiante en ese escenario
-    const items = await prisma.socialHourEntry.findMany({
-      where: {
+    // 3. Obtener el historial de horas para este estudiante en este escenario
+    const items = await prisma.registroHoraSocial.findMany({
+      where: { 
         studentId: studentId,
         scenarioId: scenario.id
       },
       orderBy: { workDate: 'desc' }
     })
 
-    // 4. Obtener también el resumen de horas totales para pintar la barra de progreso
-    const assignment = await prisma.studentScenarioAssignment.findUnique({
+    // 4. Obtener la asignación para ver horas aprobadas vs requeridas
+    const assignment = await prisma.asignacionEstudianteEscenario.findUnique({
       where: {
         studentId_scenarioId: {
           scenarioId: scenario.id,

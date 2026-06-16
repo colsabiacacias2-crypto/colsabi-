@@ -36,7 +36,7 @@ export async function DELETE(request, { params }) {
     const prisma = getPrisma()
     
     // Buscar la asignación usando los dos IDs (ya que la tabla tiene una llave compuesta única)
-    const assignment = await prisma.studentScenarioAssignment.findUnique({
+    const assignment = await prisma.asignacionEstudianteEscenario.findUnique({
       where: {
         studentId_scenarioId: {
           scenarioId: id,
@@ -50,7 +50,7 @@ export async function DELETE(request, { params }) {
     }
 
     // Eliminar la asignación
-    await prisma.studentScenarioAssignment.delete({
+    await prisma.asignacionEstudianteEscenario.delete({
       where: {
         id: assignment.id
       }

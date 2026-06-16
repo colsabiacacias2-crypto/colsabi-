@@ -35,7 +35,7 @@ export async function GET(request, { params }) {
 
     const prisma = getPrisma()
     
-    const scenario = await prisma.practiceScenario.findUnique({
+    const scenario = await prisma.escenarioPractica.findUnique({
       where: { id },
       include: {
         application: true, // Incluye toda la información del formulario original
@@ -90,7 +90,7 @@ export async function DELETE(request, { params }) {
 
     const prisma = getPrisma()
     
-    const scenario = await prisma.practiceScenario.findUnique({
+    const scenario = await prisma.escenarioPractica.findUnique({
       where: { id }
     })
 
@@ -101,7 +101,7 @@ export async function DELETE(request, { params }) {
     // Transacción para garantizar la integridad de la base de datos
     await prisma.$transaction(async (tx) => {
       // 1. Desvincular la solicitud (application) para que no rompa la llave foránea
-      await tx.scenarioApplication.updateMany({
+      await tx.postulacionEscenario.updateMany({
         where: { approvedScenarioId: id },
         data: { 
           approvedScenarioId: null, 
@@ -111,18 +111,18 @@ export async function DELETE(request, { params }) {
       })
 
       // 2. Eliminar el escenario (las asignaciones de estudiantes y horas se borrarán en cascada)
-      await tx.practiceScenario.delete({
+      await tx.escenarioPractica.delete({
         where: { id }
       })
 
       // 3. Eliminar al usuario "Asociado" que administraba este escenario (si existe)
       if (scenario.managerUserId) {
         // Primero limpiar posibles registros de auditoría vinculados al usuario para evitar errores de llave foránea
-        await tx.auditLog.deleteMany({
+        await tx.bitacoraAuditoria.deleteMany({
           where: { userId: scenario.managerUserId }
         })
         
-        await tx.user.delete({
+        await tx.usuario.delete({
           where: { id: scenario.managerUserId }
         })
       }

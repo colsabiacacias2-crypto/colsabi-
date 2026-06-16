@@ -53,7 +53,7 @@ export async function GET(request, { params }) {
     const prisma = getPrisma()
     
     // Validar que el escenario exista
-    const scenario = await prisma.practiceScenario.findUnique({
+    const scenario = await prisma.escenarioPractica.findUnique({
       where: { id }
     })
 
@@ -62,7 +62,7 @@ export async function GET(request, { params }) {
     }
 
     // Obtener los estudiantes asignados a este escenario
-    const items = await prisma.studentScenarioAssignment.findMany({
+    const items = await prisma.asignacionEstudianteEscenario.findMany({
       where: { scenarioId: id },
       orderBy: { assignedAt: 'desc' },
       take: query.take,
@@ -129,7 +129,7 @@ export async function POST(request, { params }) {
     const prisma = getPrisma()
 
     // 1. Validar escenario y su capacidad actual
-    const scenario = await prisma.practiceScenario.findUnique({
+    const scenario = await prisma.escenarioPractica.findUnique({
       where: { id },
       include: {
         _count: {
@@ -154,7 +154,7 @@ export async function POST(request, { params }) {
     let finalStudentId = payload.studentId
 
     if (finalStudentId) {
-      const student = await prisma.student.findUnique({
+      const student = await prisma.estudiante.findUnique({
         where: { id: finalStudentId }
       })
 
@@ -164,7 +164,7 @@ export async function POST(request, { params }) {
     } else {
       // Crear al estudiante sobre la marcha
       // Se autogenera un studentCode ya que es requerido en la base de datos
-      const newStudent = await prisma.student.create({
+      const newStudent = await prisma.estudiante.create({
         data: {
           fullName: payload.fullName,
           grade: payload.grade,
@@ -175,7 +175,7 @@ export async function POST(request, { params }) {
     }
 
     // 3. Crear la asignación (fallará automáticamente si ya existe gracias a @@unique en Prisma)
-    const assignment = await prisma.studentScenarioAssignment.create({
+    const assignment = await prisma.asignacionEstudianteEscenario.create({
       data: {
         scenarioId: id,
         studentId: finalStudentId,

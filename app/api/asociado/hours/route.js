@@ -64,7 +64,7 @@ export async function POST(request) {
     const prisma = getPrisma()
 
     // 2. Validar que el usuario maneja un escenario y que el estudiante está asignado a él
-    const scenario = await prisma.practiceScenario.findFirst({
+    const scenario = await prisma.escenarioPractica.findFirst({
       where: { managerUserId: session.userId }
     })
 
@@ -72,7 +72,7 @@ export async function POST(request) {
       return NextResponse.json({ error: 'No tienes un escenario asignado' }, { status: 404, headers })
     }
 
-    const assignment = await prisma.studentScenarioAssignment.findUnique({
+    const assignment = await prisma.asignacionEstudianteEscenario.findUnique({
       where: {
         studentId_scenarioId: {
           scenarioId: scenario.id,
@@ -88,7 +88,7 @@ export async function POST(request) {
     // 3. Crear el registro de horas y actualizar las horas acumuladas (en una transacción)
     const result = await prisma.$transaction(async (tx) => {
       // Crear el registro en el historial
-      const entry = await tx.socialHourEntry.create({
+      const entry = await tx.registroHoraSocial.create({
         data: {
           studentId: payload.studentId,
           scenarioId: scenario.id,
@@ -103,7 +103,7 @@ export async function POST(request) {
       })
 
       // Sumar las horas al contador principal del estudiante en este escenario
-      const updatedAssignment = await tx.studentScenarioAssignment.update({
+      const updatedAssignment = await tx.asignacionEstudianteEscenario.update({
         where: { id: assignment.id },
         data: {
           approvedHours: {

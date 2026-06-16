@@ -49,17 +49,17 @@ export async function GET(request) {
 
     const prisma = getPrisma()
 
-    // 2. Encontrar el escenario que maneja este usuario
-    const scenario = await prisma.practiceScenario.findFirst({
+    // 1. Obtener el escenario que maneja este asociado
+    const scenario = await prisma.escenarioPractica.findFirst({
       where: { managerUserId: session.userId }
     })
 
     if (!scenario) {
-      return NextResponse.json({ error: 'No tienes un escenario asignado' }, { status: 404, headers })
+      return NextResponse.json({ error: 'No tienes un escenario asignado' }, { status: 403 })
     }
 
-    // 3. Obtener los estudiantes asignados a este escenario
-    const assignments = await prisma.studentScenarioAssignment.findMany({
+    // 2. Obtener los estudiantes asignados a este escenario
+    const assignments = await prisma.asignacionEstudianteEscenario.findMany({
       where: { scenarioId: scenario.id },
       include: {
         student: {

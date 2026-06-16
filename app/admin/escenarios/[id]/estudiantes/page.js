@@ -10,7 +10,7 @@ export default async function EstudiantesEscenarioPage({ params }) {
   const prisma = getPrisma()
   
   // Buscar el escenario
-  const scenario = await prisma.practiceScenario.findUnique({
+  const scenario = await prisma.escenarioPractica.findUnique({
     where: { id }
   })
 
@@ -19,7 +19,7 @@ export default async function EstudiantesEscenarioPage({ params }) {
   }
 
   // Buscar los estudiantes asignados
-  const assignments = await prisma.studentScenarioAssignment.findMany({
+  const assignments = await prisma.asignacionEstudianteEscenario.findMany({
     where: { scenarioId: id },
     orderBy: { assignedAt: 'desc' },
     include: {

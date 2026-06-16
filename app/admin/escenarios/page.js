@@ -6,8 +6,7 @@ export const dynamic = 'force-dynamic'
 
 export default async function EscenariosPage() {
   const prisma = getPrisma()
-  
-  const escenarios = await prisma.practiceScenario.findMany({
+  const escenarios = await prisma.escenarioPractica.findMany({
     orderBy: { createdAt: 'desc' },
     include: {
       _count: {

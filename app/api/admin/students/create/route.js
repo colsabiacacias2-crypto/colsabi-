@@ -44,7 +44,7 @@ export async function POST(request) {
     // Autogenerar un código de estudiante si no fue proveído (es requerido por BD)
     const code = payload.studentCode || `STU-${Date.now().toString().slice(-6)}-${Math.floor(Math.random() * 1000)}`
 
-    const newStudent = await prisma.student.create({
+    const newStudent = await prisma.estudiante.create({
       data: {
         fullName: payload.fullName,
         grade: payload.grade,

@@ -46,7 +46,7 @@ export async function GET(request) {
     const prisma = getPrisma()
     
     // Obtenemos los escenarios con el conteo de estudiantes asignados
-    const items = await prisma.practiceScenario.findMany({
+    const items = await prisma.escenarioPractica.findMany({
       where: query.status ? { status: query.status } : undefined,
       orderBy: { createdAt: 'desc' },
       take: query.take,
