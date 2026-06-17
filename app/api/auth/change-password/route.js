@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server'
 import bcrypt from 'bcryptjs'
 import { z } from 'zod'
-import { corsPreflight, resolveCorsHeaders } from '../../../../lib/security/cors'
-import { enforceRateLimit, getClientIp, assertJsonRequest } from '../../../../lib/security/request'
-import { hasDatabase, getPrisma } from '../../../../lib/prisma'
-import { verifyAccessToken } from '../../../../lib/security/jwt'
-import { authCookieName } from '../../../../lib/security/cookies'
+import { corsPreflight, resolveCorsHeaders } from '../../../lib/security/cors'
+import { enforceRateLimit, getClientIp, assertJsonRequest } from '../../../lib/security/request'
+import { hasDatabase, getPrisma } from '../../../lib/prisma'
+import { verifyAccessToken } from '../../../lib/security/jwt'
+import { authCookieName } from '../../../lib/security/cookies'
 
 /**
  * @fileoverview Endpoint para que cualquier usuario autenticado (incluyendo Asociados) pueda cambiar su contraseña.
