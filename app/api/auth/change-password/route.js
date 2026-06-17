@@ -65,7 +65,7 @@ export async function PUT(request) {
     const prisma = getPrisma()
 
     // 3. Obtener el usuario de la base de datos
-    const user = await prisma.user.findUnique({
+    const user = await prisma.usuario.findUnique({
       where: { id: session.userId }
     })
 
@@ -82,13 +82,13 @@ export async function PUT(request) {
     // 5. Encriptar y guardar la nueva contraseña (Mínimo 12 rondas de hashing por seguridad)
     const newPasswordHash = await bcrypt.hash(newPassword, 12)
 
-    await prisma.user.update({
+    await prisma.usuario.update({
       where: { id: user.id },
       data: { passwordHash: newPasswordHash }
     })
 
     // 6. Registro de auditoría
-    await prisma.auditLog.create({
+    await prisma.bitacoraAuditoria.create({
       data: {
         userId: user.id,
         action: 'CHANGE_PASSWORD',
